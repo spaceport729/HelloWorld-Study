@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#1B2350"/>
+  <defs><clipPath id="g"><circle cx="256" cy="256" r="168"/></clipPath></defs>
+  <circle cx="256" cy="256" r="168" fill="#2E4A9A"/>
+  <g clip-path="url(#g)">
+    <path d="M118 150c30-40 90-52 128-34 20 10 14 36-6 44-22 9-18 34-42 42-30 10-44 44-70 36-30-9-38-58-10-88z" fill="#1A730D"/>
+    <path d="M168 262c30-8 54 12 58 40 4 26-10 56-26 82-12 20-36 24-44 2-10-28-22-52-22-80 0-24 10-40 34-44z" fill="#C8283F"/>
+    <path d="M262 132c28-14 70-10 96 8 18 12 8 32-12 34-20 2-30 18-50 16-22-2-50-4-50-26 0-14 4-24 16-32z" fill="#BB5B1B"/>
+    <path d="M276 214c34-8 70 6 82 34 10 24 2 60-18 84-18 22-50 34-66 12-14-20 4-44-8-66-12-22-16-58 10-64z" fill="#8725B1"/>
+    <path d="M360 170c30 0 58 26 64 56 4 22-18 30-36 22-20-9-26-30-40-42-12-12-6-36 12-36z" fill="#1B7BBB"/>
+    <path d="M356 344c18-8 40 0 44 18 4 18-12 30-30 28-20-2-30-38-14-46z" fill="#976F26"/>
+  </g>
+  <g clip-path="url(#g)" fill="none" stroke="#FFFFFF" stroke-opacity=".35" stroke-width="4">
+    <ellipse cx="256" cy="256" rx="70" ry="168"/>
+    <ellipse cx="256" cy="256" rx="130" ry="168"/>
+    <line x1="256" y1="88" x2="256" y2="424"/>
+    <line x1="88" y1="256" x2="424" y2="256"/>
+    <path d="M100 180 Q256 150 412 180"/>
+    <path d="M100 332 Q256 362 412 332"/>
+  </g>
+  <circle cx="256" cy="256" r="168" fill="none" stroke="#FFFFFF" stroke-width="8"/>
+  <circle cx="318" cy="262" r="16" fill="#FFFFFF"/>
+  <circle cx="318" cy="262" r="8" fill="#C8283F"/>
+</svg>

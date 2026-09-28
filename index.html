@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hello, World</title>
+<meta name="description" content="A world map for getting to know each country through its music, food, festivals, crafts and a word worth knowing.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="theme-color" content="#E9EDF6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#141C44" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Hello, World">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Figtree:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#E9EDF6; --land:#C3CBDE; --land-edge:#E9EDF6; --dye-edge:#FFFFFF; --ink:#1B2350; --soft:#4A5380; --panel:#F6F7FB; --rule:#D3D8E7;
+  --display:"Caprasimo", "Georgia", serif;
+  --body:"Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141C44; --land:#2B3772; --land-edge:#141C44; --dye-edge:rgba(255,255,255,.8); --ink:#EEF0FA; --soft:#AEB6DA; --panel:#1C2658; --rule:#34407C;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141C44; --land:#2B3772; --land-edge:#141C44; --dye-edge:rgba(255,255,255,.8); --ink:#EEF0FA; --soft:#AEB6DA; --panel:#1C2658; --rule:#34407C;
+}
+/* country colors are chosen to carry white text; on the dark background the big name needs a lighter version */
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .country h2{color:color-mix(in srgb,var(--dye) 60%,#fff)} }
+:root[data-theme="dark"] .country h2{color:color-mix(in srgb,var(--dye) 60%,#fff)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
+header{padding:18px 20px 4px;max-width:1600px;margin:0 auto}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(2rem,7vw,3.2rem);line-height:1;margin:0;letter-spacing:-.01em}
+.tag{margin:.4rem 0 0;color:var(--soft);font-size:.95rem}
+.mapwrap{position:relative;max-width:1600px;margin:0 auto;padding:6px 0 0}
+svg#map{display:block;width:100%;height:auto;touch-action:manipulation}
+.c{fill:var(--land);stroke:var(--land-edge);stroke-width:.5;vector-effect:non-scaling-stroke;cursor:pointer;transition:fill .2s}
+.c.f{fill:var(--dye);stroke:var(--dye-edge);stroke-width:1}
+.c.f.dim{opacity:.55}
+.c.sel{opacity:1;stroke:var(--ink);stroke-width:1.5}
+@media (hover:hover){.c:not(.f):hover{fill:var(--rule)}}
+.pin{fill:var(--dye);stroke:var(--bg);stroke-width:1.2;vector-effect:non-scaling-stroke;pointer-events:none}
+/* invisible, finger-sized tap target around each pin, so small countries are easy to hit */
+.hit{fill:transparent;cursor:pointer}
+.c.f:focus-visible{outline:none;stroke:var(--ink);stroke-width:2}
+.ring{fill:none;stroke:var(--dye);stroke-width:1.5;vector-effect:non-scaling-stroke;pointer-events:none;transform-box:fill-box;transform-origin:center;opacity:0}
+@media (prefers-reduced-motion:no-preference){
+  .ring.go{animation:bloom 1.8s ease-out 1 both}
+}
+@keyframes bloom{0%{opacity:.9;transform:scale(.4)}100%{opacity:0;transform:scale(3.2)}}
+.worldbtn{position:absolute;right:16px;top:12px;font:600 .85rem var(--body);background:var(--panel);color:var(--ink);border:1px solid var(--rule);border-radius:999px;padding:6px 14px;cursor:pointer;display:none}
+.worldbtn.show{display:block}
+button:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.toast{max-width:1600px;margin:10px auto 0;padding:0 20px;color:var(--soft);font-size:.95rem;min-height:1.5em}
+main{max-width:760px;margin:0 auto;padding:8px 20px 40px}
+.intro{color:var(--soft);margin-top:18px}
+.country h2{font-family:var(--display);font-weight:400;font-size:clamp(2.4rem,10vw,4rem);line-height:1;margin:22px 0 0;color:var(--dye)}
+.word{margin:14px 0 26px;padding:14px 18px;border-radius:18px;background:var(--dye);color:#fff}
+.word .w{font-family:var(--display);font-size:1.6rem;line-height:1.1;display:block;overflow-wrap:anywhere}
+.word p{margin:.35rem 0 0;font-size:1rem}
+.word .native{display:block;font-size:1.15rem;opacity:.9;margin-top:2px}
+.sayrow{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-top:8px}
+.say{font-style:italic;font-size:.95rem}
+.hear{font:600 .9rem var(--body);color:var(--dye);background:#fff;border:0;border-radius:999px;padding:5px 14px;cursor:pointer}
+.hear:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.ask{margin:0 0 26px;padding:12px 16px;border:2px dashed var(--dye);border-radius:18px}
+.ask h3{font-family:var(--display);font-weight:400;font-size:1.3rem;margin:0 0 4px;line-height:1.2}
+.ask p{margin:0}
+.ask p+p{margin-top:.5rem}
+section.card{position:relative;padding:4px 0 18px 22px;margin:0 0 6px}
+section.card::before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:5px;border-radius:3px;
+  background:repeating-linear-gradient(180deg,var(--dye) 0 7px,transparent 7px 11px)}
+section.card h3{font-family:var(--display);font-weight:400;font-size:1.3rem;margin:0 0 4px;line-height:1.2}
+section.card p{margin:.3rem 0}
+.listen{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:8px}
+.listen a{color:var(--ink);font-weight:600;text-decoration-color:var(--dye);text-decoration-thickness:2px;text-underline-offset:3px}
+.note{max-width:760px;margin:0 auto;padding:0 20px 30px;color:var(--soft);font-size:.85rem}
+@media (min-width:900px){ main{padding-top:20px} }
+</style>
+</head>
+<body>
+<header>
+  <h1>Hello, World</h1>
+  <p class="tag">Tap a colored country for its music, craft, wildlife and food.</p>
+</header>
+<div class="mapwrap">
+  <svg id="map" viewBox="0 0 960 500" role="img" aria-label="World map"><g id="countries"></g><g id="pins"></g></svg>
+  <button class="worldbtn" id="worldbtn" type="button">Show whole world</button>
+</div>
+<div class="toast" id="toast" aria-live="polite"></div>
+<main id="panel">
+  <p class="intro">Tap a colored country or a pin on the map to start.</p>
+</main>
+<p class="note">Prototype, written late September 2026. The "This season" notes are calendar-based, not a live feed; listening links open specific albums, songs, or playlists in Apple Music. Pronunciation uses your device's voices, so it appears only where a matching language voice is installed; otherwise follow the respelling.</p>
+
+<script>
+async function main(){
+const [PATHS, COUNTRIES] = await Promise.all([
+  fetch("data/world-paths.json",{cache:"no-cache"}).then(r=>r.json()),
+  fetch("data/countries.json",{cache:"no-cache"}).then(r=>r.json())
+]);
+
+
+const svgNS="http://www.w3.org/2000/svg";
+const map=document.getElementById('map'), gC=document.getElementById('countries'), gP=document.getElementById('pins');
+const panel=document.getElementById('panel'), toast=document.getElementById('toast'), worldBtn=document.getElementById('worldbtn');
+const els={}, pins={}; let current=null;
+
+PATHS.forEach(p=>{
+  const el=document.createElementNS(svgNS,'path');
+  el.setAttribute('d',p.d); el.setAttribute('class','c');
+  const info=COUNTRIES[p.id];
+  if(info){el.classList.add('f'); el.style.setProperty('--dye',info.color);
+    // reachable by keyboard: Tab to a colored country, Enter or Space to open it
+    el.setAttribute('tabindex','0'); el.setAttribute('role','button'); el.setAttribute('aria-label',info.name);
+    el.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); select(p.id); } });}
+  const t=document.createElementNS(svgNS,'title'); t.textContent=p.name; el.appendChild(t);
+  el.addEventListener('click',()=> info ? select(p.id) : notYet(p.name));
+  gC.appendChild(el); els[p.id]=el; pins[p.id]=p.pin;
+});
+
+// pins so small countries are findable; world-paths.json places each one inside the country's largest landmass
+Object.entries(COUNTRIES).forEach(([id,info],i)=>{
+  const [cx,cy]=pins[id];
+  const ring=document.createElementNS(svgNS,'circle');
+  ring.setAttribute('cx',cx);ring.setAttribute('cy',cy);ring.setAttribute('r',6);
+  ring.setAttribute('class','ring'); ring.style.setProperty('--dye',info.color); ring.style.animationDelay=(0.3+i*0.25)+'s';
+  const pin=document.createElementNS(svgNS,'circle');
+  pin.setAttribute('cx',cx);pin.setAttribute('cy',cy);pin.setAttribute('r',3.2);
+  pin.setAttribute('class','pin'); pin.style.setProperty('--dye',info.color);
+  const hit=document.createElementNS(svgNS,'circle');
+  hit.setAttribute('cx',cx);hit.setAttribute('cy',cy);hit.setAttribute('r',9);hit.setAttribute('class','hit');
+  hit.addEventListener('click',()=>select(id));
+  gP.appendChild(ring); gP.appendChild(pin); gP.appendChild(hit);
+  requestAnimationFrame(()=>ring.classList.add('go'));
+});
+
+const n=Object.keys(COUNTRIES).length, words=['','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve'];
+panel.querySelector('.intro').textContent=`${words[n]||n} ${n===1?'country is':'countries are'} filled in so far. Tap a colored country or a pin on the map to start.`;
+
+function notYet(name){
+  toast.textContent=name+" isn't filled in yet. The colored countries are ready now.";
+}
+
+const full=[0,0,960,500]; let vb=full.slice();
+requestAnimationFrame(()=>setVB(vb));
+const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+// pins keep the same size on screen at any zoom, so they don't swallow small countries
+function setVB(v){vb=v; map.setAttribute('viewBox',v.join(' '));
+  const k=v[2]/960; gP.querySelectorAll('.pin').forEach(c=>c.setAttribute('r',3.2*k)); gP.querySelectorAll('.ring').forEach(c=>c.setAttribute('r',6*k)); 
+  // tap targets stay about 11 screen pixels in radius at any screen width and zoom
+  const px=map.getBoundingClientRect().width||960; gP.querySelectorAll('.hit').forEach(c=>c.setAttribute('r',11*v[2]/px));}
+window.addEventListener('resize',()=>setVB(vb));
+function animateTo(target){
+  if(reduce){setVB(target);return;}
+  const from=vb.slice(), t0=performance.now(), dur=650;
+  const step=now=>{
+    const k=Math.min(1,(now-t0)/dur), e=1-Math.pow(1-k,3);
+    setVB(from.map((v,i)=>v+(target[i]-v)*e));
+    if(k<1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+function zoomTo(id){
+  const b=els[id].getBBox();
+  let w=Math.max(b.width*2.6,150), h=w*500/960;
+  if(h<b.height*2){h=b.height*2; w=h*960/500;}
+  const cx=b.x+b.width/2, cy=b.y+b.height/2;
+  animateTo([cx-w/2, cy-h/2, w, h]);
+}
+
+function esc(s){return s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+// notes can have several paragraphs, separated by a blank line
+function paras(s){return s.split('\n\n').map(p=>`<p>${esc(p)}</p>`).join('');}
+
+function select(id){
+  const info=COUNTRIES[id]; current=id; toast.textContent='';
+  Object.keys(COUNTRIES).forEach(k=>{
+    els[k].classList.toggle('sel',k===id);
+    els[k].classList.toggle('dim',k!==id);
+  });
+  zoomTo(id); worldBtn.classList.add('show');
+  setTimeout(()=>wireHear(info),0);
+  panel.style.setProperty('--dye',info.color);
+  panel.innerHTML=`<article class="country">
+    <h2>${esc(info.name)}</h2>
+    <div class="word"><span class="w">${esc(info.word.word)}</span>${info.word.nativeScript?`<span class="native" lang="${esc(info.word.speechLang)}">${esc(info.word.nativeScript)}</span>`:''}
+      <div class="sayrow"><span class="say">Say it: ${esc(info.word.sayIt)}</span><button type="button" class="hear" hidden>Hear it</button></div>
+      ${paras(info.word.meaning)}</div>
+    <div class="ask"><h3>Something to ask</h3>${paras(info.ask)}</div>
+    ${info.cards.map(c=>`<section class="card"><h3>${esc(c.title)}</h3>${paras(c.text)}${
+      c.links?`<div class="listen">${c.links.map(l=>`<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join('')}</div>`:''
+    }</section>`).join('')}
+  </article>`;
+  const h=panel.querySelector('h2'); if(h.getBoundingClientRect().top>window.innerHeight*0.8) h.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});
+}
+
+// A plain language code (es) takes any voice for that language. A code with a region (pt-PT) means the
+// accent matters, so only that region's voice will do: no Brazilian voice reading a Portuguese word.
+function voiceFor(lang){
+  if(!('speechSynthesis' in window)) return null;
+  const vs=speechSynthesis.getVoices(), l=lang.toLowerCase(), norm=v=>v.lang.toLowerCase().replace('_','-');
+  const exact=vs.find(v=>norm(v)===l);
+  if(exact || l.includes('-')) return exact || null;
+  return vs.find(v=>norm(v).split('-')[0]===l) || null;
+}
+function wireHear(info){
+  const btn=panel.querySelector('.hear'); if(!btn) return;
+  const v=voiceFor(info.word.speechLang); if(!v) return;
+  btn.hidden=false;
+  btn.onclick=()=>{ speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(info.word.word); u.voice=v; u.lang=v.lang; u.rate=0.8; speechSynthesis.speak(u); };
+}
+if('speechSynthesis' in window){ speechSynthesis.getVoices(); speechSynthesis.addEventListener?.('voiceschanged',()=>{ if(current) wireHear(COUNTRIES[current]); }); }
+worldBtn.addEventListener('click',()=>{
+  animateTo(full); worldBtn.classList.remove('show'); current=null;
+  Object.keys(COUNTRIES).forEach(k=>{els[k].classList.remove('sel','dim');});
+});
+}
+main().catch(err=>{document.getElementById("panel").innerHTML="<p>The map data didn't load. Open this page through a web server (GitHub Pages or a local server), not straight from a file.</p>";console.error(err);});
+</script>
+<script>
+// Offline support when installed; skipped where service workers aren't allowed (e.g. inside a preview frame).
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+  try { navigator.serviceWorker.register('sw.js').catch(() => {}); } catch (e) {}
+}
+</script>
+</body>
+</html>
