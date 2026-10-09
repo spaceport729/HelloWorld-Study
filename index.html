@@ -22,17 +22,19 @@
   box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px);
   padding-bottom:env(safe-area-inset-bottom,0px);
-  --bg:#E9EDF6; --land:#C3CBDE; --land-edge:#E9EDF6; --dye-edge:#FFFFFF; --ink:#1B2350; --soft:#4A5380; --panel:#F6F7FB; --rule:#D3D8E7;
+  --unsafe:#8E929C; --warn:#9A5B00; --bg:#E9EDF6; --land:#C3CBDE; --land-edge:#E9EDF6; --dye-edge:#FFFFFF; --ink:#1B2350; --soft:#4A5380; --panel:#F6F7FB; --rule:#D3D8E7;
   --display:"Caprasimo", "Georgia", serif;
   --body:"Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     --bg:#141C44; --land:#2B3772; --land-edge:#141C44; --dye-edge:rgba(255,255,255,.8); --ink:#EEF0FA; --soft:#AEB6DA; --panel:#1C2658; --rule:#34407C;
+    --unsafe:#565A66; --warn:#F2B35A;
   }
 }
 :root[data-theme="dark"]{
   --bg:#141C44; --land:#2B3772; --land-edge:#141C44; --dye-edge:rgba(255,255,255,.8); --ink:#EEF0FA; --soft:#AEB6DA; --panel:#1C2658; --rule:#34407C;
+  --unsafe:#565A66; --warn:#F2B35A;
 }
 /* country colors are chosen to carry white text; on the dark background the big name needs a lighter version */
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .country h2{color:color-mix(in srgb,var(--dye) 60%,#fff)} }
@@ -147,7 +149,7 @@ ol.rank{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:2px}
 .row.on{background:var(--panel);border-color:var(--rule)}
 .row:focus-visible{outline:2px solid var(--ink)}
 .rk{font-variant-numeric:tabular-nums;color:var(--soft);font-size:.9rem;text-align:right}
-.nm{font-weight:600;min-width:0;display:flex;align-items:center;gap:8px;overflow-wrap:anywhere}
+.nm{font-weight:600;min-width:0;display:flex;align-items:center;flex-wrap:wrap;gap:4px 8px;overflow-wrap:anywhere}
 .nm::before{content:"";flex:none;width:11px;height:11px;border-radius:50%;background:var(--dye)}
 .sc{font-family:var(--display);font-size:1.3rem;text-align:right;font-variant-numeric:tabular-nums}
 .bars{grid-column:2 / 4;display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
@@ -157,6 +159,17 @@ ol.rank{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:2px}
 .barkey span:nth-child(2){display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
 .ev{grid-column:2 / 4;font-size:.88rem;color:var(--soft);min-width:0}
 .tfine{color:var(--soft);font-size:.82rem;margin:24px 0 30px}
+/* Do Not Travel: flat grey, no score, no glow */
+body.travel .c.f.x{fill:var(--unsafe);stroke:var(--land-edge);stroke-width:.5;filter:none}
+body.travel .c.f.x.sel{stroke:var(--ink);stroke-width:1.6}
+body.travel .pin.x{display:block;fill:var(--unsafe)}
+.tkey{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:.82rem;color:var(--soft);margin-top:6px}
+.tkey span{display:inline-flex;align-items:center;gap:6px}
+.tkey i{display:inline-block;width:12px;height:12px;border-radius:3px;background:var(--unsafe)}
+.flag{display:inline-block;font-size:.75rem;font-weight:600;color:var(--warn);border:1px solid currentColor;border-radius:999px;padding:0 8px;margin-left:2px;white-space:nowrap}
+.advice{margin-top:10px;padding:10px 12px;border-radius:12px;background:var(--panel);border:1px solid var(--rule);font-size:.92rem}
+.advice a{color:var(--ink);font-weight:600}
+.more{margin:10px 0 0 2.6rem}
 .tfine p{margin:.4rem 0}
 </style>
 </head>
@@ -176,6 +189,7 @@ ol.rank{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:2px}
     <input type="range" id="monthRange" min="0" max="11" step="1" value="0" aria-label="Month">
     <div class="ticks" id="ticks"></div>
   </div>
+  <div class="tkey" id="tkey" hidden><span><i></i>Grey: the US State Department says do not travel</span></div>
 </div>
 <div class="mapwrap">
   <svg id="map" viewBox="0 0 960 500" role="img" aria-label="World map"><g id="countries"></g><g id="pins"></g></svg>
@@ -193,9 +207,12 @@ ol.rank{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:2px}
     <div class="tlist-head"><h2 id="lh">Best bets in <span id="lhMonth"></span></h2><span>Score out of 100</span></div>
     <div class="barkey" aria-hidden="true"><span></span><span><span>Weather</span><span>Value</span><span>Celebrate</span><span>Calm</span></span><span></span></div>
     <ol class="rank" id="rank"></ol>
+    <button type="button" class="chip more" id="moreBtn" hidden></button>
+    <p class="tfine" id="skipped" hidden></p>
   </section>
   <div class="tfine">
     <p>Travel scores cover <span id="tcount">a few</span> countries so far. They're estimates from typical seasonal patterns, not measured data, and festival dates shift a little each year.</p>
+    <p id="advNote" hidden></p>
     <p>Value compares each month with that same country's priciest month, so it says when a country is cheap for itself, not whether it's cheaper than another country. Flights from Seattle aren't included yet. Big countries get one score even when their regions differ.</p>
   </div>
 </div>
@@ -206,11 +223,13 @@ ol.rank{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:2px}
 
 <script>
 async function main(){
-const [PATHS, COUNTRIES, TRAVEL] = await Promise.all([
+const [PATHS, COUNTRIES, TRAVEL, ADVISORIES] = await Promise.all([
   fetch("data/world-paths.json",{cache:"no-cache"}).then(r=>r.json()),
   fetch("data/countries.json",{cache:"no-cache"}).then(r=>r.json()),
   // travel scores are optional: if they don't load, the app works as before without the When to go view
-  fetch("data/travel.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).then(d=>d&&d.countries||null).catch(()=>null)
+  fetch("data/travel.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).then(d=>d&&d.countries||null).catch(()=>null),
+  // State Department advisory levels: also optional, so a missing file never breaks the app
+  fetch("data/advisories.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).catch(()=>null)
 ]);
 let travel=false;
 
@@ -334,13 +353,22 @@ function showWorld(){
 
 // One handler for every tap on the map, so each view decides what a tap means
 function tap(id,name){
-  if(travel){ if(T[id]) pickTravel(id); else toast.textContent=name+" doesn't have travel scores yet."; }
+  if(travel){ if(T[id]||unsafe(id)) pickTravel(id); else toast.textContent=name+" doesn't have travel scores yet."; }
   else if(COUNTRIES[id]) select(id); else notYet(name);
 }
 
 /* ---------- When to go ---------- */
 const T=TRAVEL||{};
-const tIds=Object.keys(T).filter(id=>COUNTRIES[id]&&els[id]);
+const ADV=(ADVISORIES&&ADVISORIES.countries)||{};
+const ADV_URL=(ADVISORIES&&ADVISORIES.source)||'https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html';
+const level=id=>(ADV[id]&&ADV[id].level)||0;
+const unsafe=id=>level(id)>=4;
+// countries under a Do Not Travel advisory are greyed out and never ranked, whether or not they have scores
+const xIds=Object.keys(ADV).filter(id=>unsafe(id)&&COUNTRIES[id]&&els[id]);
+const tIds=Object.keys(T).filter(id=>COUNTRIES[id]&&els[id]&&!unsafe(id));
+const LEVEL_TEXT={1:'Exercise normal precautions',2:'Exercise increased caution',3:'Reconsider travel',4:'Do not travel'};
+const fmtDate=d=>{ try{ return new Date(d+'T12:00:00').toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'}); }catch(e){ return d; } };
+let showAll=false;
 const MONTHS=["January","February","March","April","May","June","July","August","September","October","November","December"];
 const FACTORS=[
   {k:"weather",label:"Weather",help:"How pleasant the season is for getting out and exploring."},
@@ -357,6 +385,12 @@ if(tIds.length){
   document.getElementById('modes').hidden=false;
   document.getElementById('tcount').textContent=tIds.length;
   tIds.forEach(id=>{ els[id].classList.add('t'); if(pinEls[id]) pinEls[id].classList.add('t'); });
+  xIds.forEach(id=>{ els[id].classList.add('x'); if(pinEls[id]) pinEls[id].classList.add('x'); });
+  if(xIds.length){
+    document.getElementById('tkey').hidden=false;
+    const n=document.getElementById('advNote'); n.hidden=false;
+    n.innerHTML=`Grey countries and the "Reconsider travel" labels come from the <a href="${esc(ADV_URL)}" target="_blank" rel="noopener">US State Department's travel advisories</a>, checked ${esc(fmtDate(ADVISORIES.checked))}. They're written for US citizens and change often, so check the current advisory before booking.`;
+  }
 }
 const modeBtns={explore:document.getElementById('modeExplore'),travel:document.getElementById('modeTravel')};
 function setMode(m){
@@ -366,7 +400,7 @@ function setMode(m){
   modeBtns.travel.setAttribute('aria-pressed',String(travel));
   showWorld();
   if(travel) renderTravel();
-  else tIds.forEach(id=>els[id].classList.remove('glow','sel'));
+  else tIds.concat(xIds).forEach(id=>els[id].classList.remove('glow','sel'));
   try{ localStorage.setItem('hw-mode',m); }catch(e){}
 }
 modeBtns.explore.addEventListener('click',()=>setMode('explore'));
@@ -406,17 +440,39 @@ function renderTravel(){
     els[r.id].style.setProperty('--p',p); els[r.id].classList.toggle('glow',i<3); els[r.id].classList.toggle('sel',r.id===tSel);
     if(pinEls[r.id]) pinEls[r.id].style.setProperty('--p',p);
   });
+  xIds.forEach(id=>els[id].classList.toggle('sel',id===tSel));
   const rank=document.getElementById('rank');
-  rank.innerHTML=ranked.map((r,i)=>{ const ev=T[r.id].happening&&T[r.id].happening[month];
+  const shown=showAll?ranked:ranked.slice(0,10);
+  rank.innerHTML=shown.map((r,i)=>{ const ev=T[r.id].happening&&T[r.id].happening[month];
     return `<li class="row${r.id===tSel?' on':''}" tabindex="0" data-id="${r.id}" style="--dye:${esc(COUNTRIES[r.id].color)}">
-      <span class="rk">${i+1}</span><span class="nm">${esc(COUNTRIES[r.id].name)}</span><span class="sc">${r.s}</span>
+      <span class="rk">${i+1}</span><span class="nm">${esc(COUNTRIES[r.id].name)}${level(r.id)===3?'<span class="flag">Reconsider travel</span>':''}</span><span class="sc">${r.s}</span>
       <span class="bars" aria-hidden="true">${FACTORS.map(f=>`<i><b style="width:${T[r.id][f.k][month]*10}%"></b></i>`).join('')}</span>
       ${ev?`<span class="ev">${esc(ev)}</span>`:''}</li>`; }).join('');
   rank.querySelectorAll('.row').forEach(row=>{ row.addEventListener('click',()=>pickTravel(row.dataset.id));
     row.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); pickTravel(row.dataset.id); } }); });
+  const more=document.getElementById('moreBtn');
+  more.hidden=ranked.length<=10;
+  more.textContent=showAll?'Show the top 10':`Show all ${ranked.length}`;
+  more.onclick=()=>{ showAll=!showAll; renderTravel(); };
+  const sk=document.getElementById('skipped');
+  sk.hidden=!xIds.length;
+  sk.textContent=`Not ranked: ${xIds.length} ${xIds.length===1?'country':'countries'} under a Do Not Travel advisory, shown in grey on the map.`;
 
   const det=document.getElementById('tdetail');
   if(!tSel){ det.innerHTML=''; return; }
+  const adv=ADV[tSel];
+  const advBox=adv&&adv.level>=3?`<div class="advice"><strong>US advisory, Level ${adv.level}: ${esc(LEVEL_TEXT[adv.level])}.</strong>${adv.note?' '+esc(adv.note)+'.':''}${adv.issued?' Issued '+esc(fmtDate(adv.issued))+'.':''} <a href="${esc(ADV_URL)}" target="_blank" rel="noopener">Read the advisory</a></div>`:'';
+  if(unsafe(tSel)){
+    const c=COUNTRIES[tSel];
+    det.innerHTML=`<div class="tdet" style="--dye:${esc(c.color)}">
+      <div class="tdet-head"><h2>${esc(c.name)}</h2><button class="chip" type="button" id="tClose">Close</button></div>
+      ${advBox}
+      <p>It isn't scored for travel while this advisory stands. You can still explore its music, food and culture.</p>
+      <div class="tdet-actions"><button class="chip" type="button" id="tCard">Open the ${esc(c.name)} card</button></div></div>`;
+    document.getElementById('tClose').addEventListener('click',()=>{ tSel=null; renderTravel(); });
+    document.getElementById('tCard').addEventListener('click',()=>{ const id=tSel; tSel=null; setMode('explore'); select(id); });
+    return;
+  }
   const c=COUNTRIES[tSel], t=T[tSel], yr=MONTHS.map((_,m)=>score(tSel,m));
   const best=yr.map((s,m)=>({s,m})).sort((a,b)=>b.s-a.s).slice(0,3).sort((a,b)=>a.m-b.m).map(x=>MONTHS[x.m]);
   const ev=t.happening&&t.happening[month];
@@ -427,6 +483,7 @@ function renderTravel(){
     <p><strong>Best months with your weights:</strong> ${best.join(', ')}</p>
     <p><strong>${MONTHS[month]} scores ${yr[month]}:</strong> ${FACTORS.map(f=>`${f.label.toLowerCase()} ${t[f.k][month]}/10`).join(', ')}.</p>
     ${ev?`<p><strong>Happening:</strong> ${esc(ev)}</p>`:''}
+    ${advBox}
     <div class="tdet-actions"><button class="chip" type="button" id="tCard">Open the ${esc(c.name)} card</button></div>
   </div>`;
   det.querySelectorAll('.yr button').forEach(b=>b.addEventListener('click',()=>setMonth(+b.dataset.m)));

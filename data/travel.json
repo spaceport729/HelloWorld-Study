@@ -184,6 +184,1278 @@
     "8": "Southern right whales at Hermanus, wildflowers, and Heritage Day on Sept 24",
     "11": "Long summer holidays: beautiful, but busy and expensive"
    }
+  },
+  "008": {
+   "weather": [3,3,5,7,8,9,9,9,9,7,4,3],
+   "value": [9,9,8,7,6,4,2,2,5,8,9,8],
+   "events": [3,3,4,4,4,5,6,6,5,4,5,4],
+   "calm": [9,9,8,7,6,4,2,1,4,7,9,8],
+   "happening": {}
+  },
+  "040": {
+   "weather": [5,5,5,6,8,9,9,9,8,6,3,5],
+   "value": [5,5,6,7,7,5,3,3,6,7,8,4],
+   "events": [5,5,4,4,5,6,8,8,5,4,5,9],
+   "calm": [5,5,6,7,6,4,2,2,5,7,8,4],
+   "happening": {
+    "0": "Vienna's ball season (January to February)",
+    "6": "Salzburg Festival opens in late July",
+    "7": "Salzburg Festival continues through August",
+    "11": "Christmas markets in Vienna and Salzburg"
+   }
+  },
+  "056": {
+   "weather": [2,3,4,6,8,9,9,9,7,5,3,2],
+   "value": [8,8,7,6,5,4,2,2,5,7,8,5],
+   "events": [3,6,4,4,4,5,6,5,4,4,4,8],
+   "calm": [8,8,7,5,5,3,2,1,4,6,8,5],
+   "happening": {
+    "1": "Carnival in Binche, with the Gilles in ostrich-feather hats",
+    "6": "Ommegang pageant in Brussels' Grand-Place, early July",
+    "11": "Christmas markets and Winter Wonders in Brussels"
+   }
+  },
+  "070": {
+   "weather": [2,3,5,7,8,9,9,9,8,6,4,2],
+   "value": [9,9,8,7,7,5,3,3,6,8,9,8],
+   "events": [3,4,4,4,4,5,7,7,4,4,3,4],
+   "calm": [9,9,8,7,6,5,3,3,6,8,9,8],
+   "happening": {
+    "6": "Mostar's bridge divers compete in late July",
+    "7": "Sarajevo Film Festival in August"
+   }
+  },
+  "100": {
+   "weather": [3,3,5,7,8,9,9,9,8,6,4,3],
+   "value": [8,8,8,7,6,4,2,2,6,8,9,7],
+   "events": [4,4,6,4,6,7,4,4,4,4,3,5],
+   "calm": [7,8,8,7,6,4,2,2,6,8,9,7],
+   "happening": {
+    "2": "Baba Marta on March 1, when everyone ties on red-and-white martenitsi",
+    "4": "Rose-picking begins in the Valley of Roses",
+    "5": "Kazanlak Rose Festival, usually the first weekend of June"
+   }
+  },
+  "191": {
+   "weather": [3,4,6,7,9,9,7,6,9,8,5,3],
+   "value": [9,8,7,5,5,3,2,2,4,7,9,7],
+   "events": [3,4,3,4,4,6,7,7,5,4,3,7],
+   "calm": [9,8,7,5,4,3,1,1,4,6,9,7],
+   "happening": {
+    "6": "Dubrovnik Summer Festival (July to August)",
+    "11": "Advent in Zagreb, one of Europe's loveliest Christmas markets"
+   }
+  },
+  "196": {
+   "weather": [5,5,6,8,9,8,6,6,9,9,7,5],
+   "value": [9,8,7,6,6,4,2,2,5,7,9,8],
+   "events": [4,4,4,4,6,5,4,5,4,4,3,4],
+   "calm": [9,8,7,6,5,4,2,2,4,7,9,8],
+   "happening": {
+    "4": "Orthodox Easter on May 2, 2027"
+   }
+  },
+  "203": {
+   "weather": [2,3,4,6,8,9,9,9,7,5,3,2],
+   "value": [8,8,7,6,5,4,2,2,5,7,8,5],
+   "events": [3,3,4,4,6,5,5,4,4,4,4,9],
+   "calm": [8,8,7,5,5,3,2,1,4,6,8,5],
+   "happening": {
+    "4": "Prague Spring music festival, mid-May to early June",
+    "11": "Christmas market in Prague's Old Town Square"
+   }
+  },
+  "208": {
+   "weather": [2,2,3,5,7,9,9,9,6,4,3,3],
+   "value": [7,7,7,7,6,4,3,3,6,7,7,5],
+   "events": [3,4,3,3,4,8,7,5,4,3,4,8],
+   "calm": [7,7,7,6,6,4,3,4,6,7,7,5],
+   "happening": {
+    "5": "Sankt Hans midsummer bonfires on June 23, and Roskilde Festival at month's end",
+    "11": "Tivoli Gardens at Christmas, and hygge season in full swing"
+   }
+  },
+  "233": {
+   "weather": [2,2,3,4,6,9,10,9,6,4,2,2],
+   "value": [7,7,7,7,6,4,2,3,6,7,7,5],
+   "events": [3,4,3,3,4,8,5,4,3,3,3,6],
+   "calm": [7,7,7,7,6,4,2,3,6,7,8,5],
+   "happening": {
+    "5": "Jaanipäev midsummer bonfires, June 23–24",
+    "11": "Christmas market in Tallinn's medieval Old Town"
+   }
+  },
+  "246": {
+   "weather": [5,5,5,4,5,8,9,8,6,4,3,5],
+   "value": [6,6,7,8,7,5,3,4,6,8,7,4],
+   "events": [5,5,5,3,4,8,5,4,5,3,3,8],
+   "calm": [6,6,7,8,7,4,3,4,6,8,8,4],
+   "happening": {
+    "0": "Northern lights over snowy Lapland",
+    "5": "Juhannus midsummer, with bonfires by the lakes",
+    "8": "Ruska, Lapland's autumn colors, as the northern lights return",
+    "11": "Christmas in Lapland"
+   }
+  },
+  "250": {
+   "weather": [3,4,5,7,8,9,9,8,8,6,4,3],
+   "value": [8,8,7,6,5,4,2,2,5,7,8,6],
+   "events": [4,6,4,4,6,7,9,6,5,5,4,8],
+   "calm": [8,8,7,5,5,3,2,1,4,6,8,6],
+   "happening": {
+    "1": "Nice Carnival and Menton's Lemon Festival",
+    "5": "Fête de la Musique on June 21: free music on every corner",
+    "6": "Bastille Day on July 14, and lavender in bloom in Provence",
+    "11": "Lyon's Festival of Lights (around December 8) and Strasbourg's Christmas market"
+   }
+  },
+  "276": {
+   "weather": [2,3,4,6,8,9,9,9,7,5,3,2],
+   "value": [8,8,7,6,5,4,2,2,5,7,8,5],
+   "events": [3,5,3,4,4,5,5,5,8,6,4,9],
+   "calm": [8,8,7,5,5,3,2,1,4,6,8,5],
+   "happening": {
+    "1": "Carnival in Cologne",
+    "8": "Oktoberfest in Munich starts in late September",
+    "9": "Oktoberfest wraps up in early October",
+    "11": "Christmas markets everywhere, from Nuremberg to Dresden"
+   }
+  },
+  "348": {
+   "weather": [2,3,4,6,8,9,9,9,7,5,3,2],
+   "value": [8,8,7,6,5,4,2,2,5,7,8,5],
+   "events": [3,6,4,4,4,5,5,7,4,4,4,7],
+   "calm": [8,8,7,5,5,3,2,1,4,6,8,5],
+   "happening": {
+    "1": "Busójárás in Mohács: horned masks chase winter away",
+    "7": "Sziget Festival, and St. Stephen's Day fireworks over the Danube on August 20",
+    "11": "Christmas markets in Budapest"
+   }
+  },
+  "372": {
+   "weather": [3,3,4,6,7,8,8,8,7,5,3,3],
+   "value": [8,8,6,6,6,4,2,2,5,7,8,6],
+   "events": [3,5,9,4,4,4,4,5,5,6,3,5],
+   "calm": [8,8,6,6,5,3,2,2,5,7,8,6],
+   "happening": {
+    "2": "St. Patrick's Day, March 17",
+    "9": "Halloween, which grew from the ancient festival of Samhain"
+   }
+  },
+  "428": {
+   "weather": [2,2,3,4,6,9,10,9,6,4,2,2],
+   "value": [7,7,7,7,6,4,2,3,6,7,7,5],
+   "events": [3,3,3,3,4,9,4,4,3,3,4,6],
+   "calm": [7,7,7,7,6,4,2,3,6,7,8,5],
+   "happening": {
+    "5": "Jāņi midsummer, June 23–24: oak wreaths, songs and bonfires"
+   }
+  },
+  "440": {
+   "weather": [2,2,3,4,6,9,10,9,6,4,2,2],
+   "value": [7,7,7,7,6,4,2,3,6,7,7,5],
+   "events": [3,4,6,3,4,8,4,4,3,3,3,6],
+   "calm": [7,7,7,7,6,4,2,3,6,7,8,5],
+   "happening": {
+    "2": "Kaziukas crafts fair in Vilnius, early March",
+    "5": "Joninės midsummer, June 23–24"
+   }
+  },
+  "442": {
+   "weather": [2,3,4,6,8,9,9,9,7,5,3,2],
+   "value": [8,8,7,6,5,4,2,2,5,7,8,5],
+   "events": [3,3,3,4,4,6,4,4,4,3,3,6],
+   "calm": [8,8,7,5,5,3,2,1,4,6,8,5],
+   "happening": {
+    "5": "National Day, June 23, with fireworks over the Pétrusse valley"
+   }
+  },
+  "498": {
+   "weather": [2,3,5,7,8,9,9,9,8,6,4,2],
+   "value": [9,9,8,8,7,6,5,5,6,7,9,8],
+   "events": [3,3,5,4,4,4,4,5,4,8,3,4],
+   "calm": [9,9,9,8,8,7,6,6,6,7,9,8],
+   "happening": {
+    "2": "Mărțișor on March 1",
+    "9": "National Wine Day, the first weekend of October"
+   }
+  },
+  "499": {
+   "weather": [3,4,6,7,9,9,7,6,9,8,5,3],
+   "value": [9,8,7,5,5,3,2,2,4,7,9,7],
+   "events": [3,4,4,4,4,5,6,6,4,4,3,4],
+   "calm": [9,8,7,5,4,3,2,1,4,6,9,7],
+   "happening": {}
+  },
+  "528": {
+   "weather": [2,3,4,7,8,8,8,8,6,5,3,3],
+   "value": [8,8,6,3,4,4,3,3,5,7,8,6],
+   "events": [3,3,6,10,6,4,4,5,4,4,5,6],
+   "calm": [8,8,6,2,3,4,3,3,5,7,8,6],
+   "happening": {
+    "2": "Keukenhof's tulip gardens open in late March",
+    "3": "Tulips at their peak, and King's Day on April 27, when the whole country wears orange",
+    "10": "Sinterklaas arrives by boat in mid-November"
+   }
+  },
+  "807": {
+   "weather": [2,3,5,7,8,9,9,9,8,6,4,2],
+   "value": [9,9,8,7,7,5,3,3,6,8,9,8],
+   "events": [5,3,3,4,4,4,6,7,4,4,3,3],
+   "calm": [9,9,8,7,6,5,3,3,6,8,9,8],
+   "happening": {
+    "0": "Epiphany on January 19, when swimmers race for the cross in Lake Ohrid",
+    "7": "Ohrid Summer Festival by the lake (July to August)"
+   }
+  },
+  "578": {
+   "weather": [4,4,4,4,6,9,10,9,6,4,3,3],
+   "value": [7,7,7,7,6,4,2,3,6,7,7,5],
+   "events": [5,5,4,3,8,6,4,3,4,3,4,6],
+   "calm": [7,7,7,7,6,3,2,3,6,7,8,5],
+   "happening": {
+    "0": "Northern lights over Tromsø",
+    "4": "Constitution Day on May 17: parades and folk costumes everywhere",
+    "5": "Midnight sun in the north"
+   }
+  },
+  "616": {
+   "weather": [2,3,4,6,8,9,9,9,7,5,3,2],
+   "value": [8,8,7,6,5,4,2,2,5,7,8,5],
+   "events": [3,3,5,4,4,5,4,5,4,4,4,8],
+   "calm": [8,8,7,5,5,3,2,1,4,6,8,5],
+   "happening": {
+    "2": "Easter traditions, including Śmigus-dyngus water fights on Easter Monday (Easter is March 28, 2027)",
+    "11": "Kraków's Christmas market and its glittering szopka nativity scenes"
+   }
+  },
+  "642": {
+   "weather": [2,3,5,7,8,9,9,9,8,6,4,2],
+   "value": [9,9,8,8,7,5,4,4,6,8,9,7],
+   "events": [3,3,4,4,5,5,5,6,4,4,4,7],
+   "calm": [9,9,8,8,7,5,4,4,6,8,9,7],
+   "happening": {
+    "7": "Untold music festival in Cluj-Napoca",
+    "11": "Carolers and bear-costume dances in Moldavia and Maramureș"
+   }
+  },
+  "688": {
+   "weather": [2,3,5,7,8,9,9,9,8,6,4,2],
+   "value": [9,9,8,7,7,5,3,3,6,8,9,8],
+   "events": [4,3,3,4,4,5,5,7,4,4,3,4],
+   "calm": [9,9,8,7,6,5,3,3,6,8,9,8],
+   "happening": {
+    "7": "Guča Trumpet Festival, a brass-band blowout in August"
+   }
+  },
+  "703": {
+   "weather": [2,3,4,6,8,9,9,9,7,5,3,2],
+   "value": [8,8,7,6,5,4,2,2,5,7,8,5],
+   "events": [3,3,3,4,4,5,5,4,4,4,3,6],
+   "calm": [8,8,7,6,6,4,3,3,5,7,8,6],
+   "happening": {}
+  },
+  "705": {
+   "weather": [3,3,5,6,8,9,9,9,8,6,3,3],
+   "value": [8,8,8,7,6,4,3,3,5,7,8,6],
+   "events": [3,5,3,3,4,5,5,4,5,4,4,6],
+   "calm": [8,8,8,7,6,4,2,2,5,7,8,6],
+   "happening": {
+    "1": "Kurentovanje in Ptuj: shaggy kurent costumes drive out winter"
+   }
+  },
+  "724": {
+   "weather": [4,5,6,7,9,9,7,7,9,8,5,4],
+   "value": [8,8,6,5,6,4,2,2,4,7,9,7],
+   "events": [4,5,10,7,5,6,8,7,4,4,3,6],
+   "calm": [8,8,6,4,5,3,2,1,4,6,9,7],
+   "happening": {
+    "2": "Las Fallas in Valencia (March 15–19), then Semana Santa processions",
+    "3": "Seville's April Fair",
+    "6": "San Fermín in Pamplona, July 6–14",
+    "7": "La Tomatina in Buñol, the last Wednesday of August"
+   }
+  },
+  "752": {
+   "weather": [2,2,3,4,6,9,10,9,6,4,2,2],
+   "value": [7,7,7,7,6,4,2,3,6,7,7,5],
+   "events": [4,3,3,4,4,10,5,5,3,3,4,8],
+   "calm": [7,7,7,7,6,4,2,3,6,7,8,5],
+   "happening": {
+    "5": "Midsommar: maypoles, flower crowns and herring",
+    "11": "Lucia processions with candles on December 13"
+   }
+  },
+  "756": {
+   "weather": [6,6,5,5,7,9,9,9,8,6,3,5],
+   "value": [4,4,5,6,6,4,3,3,5,6,7,4],
+   "events": [4,6,4,4,4,4,6,6,4,4,4,7],
+   "calm": [4,4,5,7,6,4,2,2,5,7,8,4],
+   "happening": {
+    "1": "Basel Fasnacht, starting at 4 a.m. the Monday after Ash Wednesday",
+    "6": "Montreux Jazz Festival",
+    "7": "Swiss National Day on August 1, with bonfires on the hills",
+    "11": "Christmas markets in Basel and Montreux"
+   }
+  },
+  "826": {
+   "weather": [2,3,4,6,7,8,8,8,6,5,3,3],
+   "value": [8,8,7,6,6,4,3,3,6,7,8,5],
+   "events": [3,3,4,4,5,6,5,8,4,4,5,8],
+   "calm": [8,8,7,5,5,4,3,2,5,7,8,5],
+   "happening": {
+    "7": "Edinburgh's festivals fill the city all August",
+    "10": "Bonfire Night fireworks on November 5",
+    "11": "Christmas markets, pantomimes, and Hogmanay in Edinburgh"
+   }
+  },
+  "051": {
+   "weather": [3,3,5,7,8,8,7,7,8,8,5,3],
+   "value": [9,9,8,7,6,5,4,4,6,7,9,8],
+   "events": [6,3,4,4,4,4,7,4,4,6,3,4],
+   "calm": [9,9,8,7,6,5,4,4,6,7,9,8],
+   "happening": {
+    "0": "Armenian Christmas on January 6",
+    "6": "Vardavar in early July, when everyone soaks everyone with water",
+    "9": "Erebuni-Yerevan, the capital's birthday party"
+   }
+  },
+  "031": {
+   "weather": [3,3,5,7,8,8,7,7,8,8,5,3],
+   "value": [8,8,8,7,6,5,4,4,6,7,8,7],
+   "events": [3,3,8,4,4,4,4,4,4,4,3,3],
+   "calm": [9,9,8,7,7,6,5,5,7,7,9,8],
+   "happening": {
+    "2": "Novruz, the spring new year, around March 20–21"
+   }
+  },
+  "792": {
+   "weather": [3,4,5,7,9,9,8,8,9,8,5,4],
+   "value": [8,8,7,6,5,4,2,2,4,6,8,7],
+   "events": [3,4,4,6,4,4,4,4,4,4,4,7],
+   "calm": [8,8,7,5,5,3,2,2,4,6,8,7],
+   "happening": {
+    "3": "Tulip Festival in Istanbul's parks",
+    "11": "Whirling dervish ceremonies in Konya for the Mevlana anniversary (December 7–17)"
+   }
+  },
+  "304": {
+   "weather": [2,2,3,4,5,8,9,8,6,4,2,2],
+   "value": [6,6,6,6,6,4,3,3,5,6,7,6],
+   "events": [4,3,4,3,4,8,4,4,5,4,3,4],
+   "calm": [8,8,8,7,6,4,3,3,5,7,8,8],
+   "happening": {
+    "5": "National Day on June 21, the longest day of the year",
+    "8": "Northern lights return over the icefjords"
+   }
+  },
+  "124": {
+   "weather": [3,3,4,5,7,9,9,9,8,6,3,3],
+   "value": [7,7,7,7,6,4,3,3,5,6,7,4],
+   "events": [4,7,4,4,4,6,7,5,6,8,3,5],
+   "calm": [7,7,7,7,6,4,3,3,5,6,8,5],
+   "happening": {
+    "1": "Quebec Winter Carnival",
+    "5": "National Indigenous Peoples Day, June 21",
+    "6": "Canada Day on July 1, and the Calgary Stampede",
+    "9": "Fall colors in Quebec and the Maritimes"
+   }
+  },
+  "840": {
+   "weather": [5,5,6,7,8,8,8,8,8,7,6,5],
+   "value": [7,7,5,6,6,4,3,3,6,6,6,4],
+   "events": [4,6,5,4,4,5,8,4,5,7,7,8],
+   "calm": [7,7,5,6,6,4,3,3,6,6,6,4],
+   "happening": {
+    "1": "Mardi Gras in New Orleans, February 9, 2027",
+    "6": "Fourth of July fireworks",
+    "9": "Fall foliage in New England, and the Albuquerque balloon fiesta",
+    "10": "Thanksgiving",
+    "11": "Holiday lights from coast to coast"
+   }
+  },
+  "320": {
+   "weather": [8,9,9,8,6,5,5,5,4,5,7,8],
+   "value": [6,6,4,4,7,7,6,7,8,8,7,4],
+   "events": [4,4,10,5,4,4,4,4,6,4,9,6],
+   "calm": [6,6,3,4,7,7,6,7,8,8,7,4],
+   "happening": {
+    "2": "Semana Santa in Antigua: streets carpeted in dyed sawdust and flowers (Easter is March 28, 2027)",
+    "8": "Independence Day, September 15, with torch relays",
+    "10": "Giant kites at Sumpango and Santiago Sacatepéquez on November 1"
+   }
+  },
+  "084": {
+   "weather": [7,8,9,9,7,5,5,5,4,4,6,7],
+   "value": [5,5,4,5,8,8,7,7,9,9,7,4],
+   "events": [4,4,4,4,4,6,5,4,7,4,6,4],
+   "calm": [5,5,4,5,8,8,7,7,9,9,7,4],
+   "happening": {
+    "5": "Lobsterfest season opens in Placencia and on Caye Caulker",
+    "8": "September Celebrations for Independence Day, September 21",
+    "10": "Garifuna Settlement Day, November 19"
+   }
+  },
+  "222": {
+   "weather": [8,9,9,8,6,5,6,6,4,5,7,8],
+   "value": [7,7,6,6,7,7,6,6,8,8,7,5],
+   "events": [4,4,5,4,4,4,4,6,5,4,5,4],
+   "calm": [7,7,5,6,8,8,7,7,9,8,7,5],
+   "happening": {
+    "7": "Fiestas Agostinas in San Salvador, early August"
+   }
+  },
+  "340": {
+   "weather": [7,8,9,8,6,5,5,5,4,4,6,7],
+   "value": [6,6,5,6,8,8,7,7,9,9,7,5],
+   "events": [4,4,4,4,6,4,4,4,4,4,4,4],
+   "calm": [6,6,5,6,8,8,7,7,9,9,7,5],
+   "happening": {
+    "4": "Carnival in La Ceiba, the country's biggest party"
+   }
+  },
+  "558": {
+   "weather": [8,9,9,8,6,5,5,5,4,4,6,7],
+   "value": [6,6,5,6,8,8,7,7,9,9,7,4],
+   "events": [5,4,4,4,4,4,4,4,4,4,4,7],
+   "calm": [6,6,5,6,8,8,7,7,9,9,7,4],
+   "happening": {
+    "11": "La Gritería on December 7, when people sing to the Virgin Mary for sweets"
+   }
+  },
+  "591": {
+   "weather": [8,9,9,8,6,5,5,5,4,4,5,7],
+   "value": [5,4,5,6,8,8,7,7,9,9,7,4],
+   "events": [4,8,4,4,4,4,4,4,4,4,6,4],
+   "calm": [5,4,5,6,8,8,7,7,9,9,7,4],
+   "happening": {
+    "1": "Carnival, biggest in Las Tablas",
+    "10": "November's patriotic holidays, with marching bands everywhere"
+   }
+  },
+  "192": {
+   "weather": [8,8,9,8,7,6,6,6,5,5,7,8],
+   "value": [5,5,4,6,7,7,5,5,8,8,7,4],
+   "events": [4,4,4,4,4,4,8,5,4,4,4,8],
+   "calm": [5,5,4,6,8,8,6,6,9,8,7,4],
+   "happening": {
+    "6": "Carnival in Santiago de Cuba",
+    "11": "Parrandas of Remedios on December 24: rival neighborhoods, floats and fireworks"
+   }
+  },
+  "214": {
+   "weather": [8,8,9,8,7,7,7,7,6,6,7,8],
+   "value": [4,4,4,6,7,7,6,6,8,8,7,3],
+   "events": [4,8,4,4,4,4,6,4,4,4,4,5],
+   "calm": [4,4,4,6,7,7,6,6,8,8,7,3],
+   "happening": {
+    "1": "Carnival every Sunday in February, with devil masks in La Vega",
+    "6": "Merengue Festival in Santo Domingo"
+   }
+  },
+  "388": {
+   "weather": [8,8,9,8,7,7,7,7,6,5,7,8],
+   "value": [4,4,4,6,7,7,6,6,8,8,7,3],
+   "events": [4,6,4,6,4,4,4,6,4,4,4,4],
+   "calm": [4,4,4,6,7,7,6,6,8,8,7,3],
+   "happening": {
+    "1": "Reggae Month, with Bob Marley's birthday on February 6",
+    "3": "Carnival in Kingston after Easter",
+    "7": "Independence Day, August 6"
+   }
+  },
+  "780": {
+   "weather": [8,9,9,8,7,6,6,6,6,6,6,7],
+   "value": [6,3,6,6,7,7,7,7,8,8,7,6],
+   "events": [5,10,4,4,4,4,4,6,4,4,5,5],
+   "calm": [6,3,6,6,7,7,7,7,8,8,7,6],
+   "happening": {
+    "1": "Carnival, February 8–9, 2027: steel pan, soca and dawn J'ouvert"
+   }
+  },
+  "044": {
+   "weather": [7,7,8,9,9,8,8,8,6,7,8,7],
+   "value": [4,4,3,6,7,6,6,6,9,8,6,3],
+   "events": [7,4,4,4,4,4,6,4,4,4,4,7],
+   "calm": [4,4,3,6,7,6,6,6,9,8,6,3],
+   "happening": {
+    "0": "Junkanoo parades on New Year's Day",
+    "11": "Junkanoo parades on Boxing Day, December 26"
+   }
+  },
+  "630": {
+   "weather": [8,8,9,8,7,7,7,7,6,6,7,8],
+   "value": [5,5,5,6,7,7,6,6,8,8,7,4],
+   "events": [8,4,4,4,4,6,4,4,4,4,6,7],
+   "calm": [5,5,5,6,7,7,6,6,8,8,7,4],
+   "happening": {
+    "0": "Fiestas de la Calle San Sebastián in Old San Juan, mid-January",
+    "10": "The Christmas season starts early and runs into mid-January"
+   }
+  },
+  "170": {
+   "weather": [8,8,8,7,7,7,8,8,7,6,6,8],
+   "value": [5,7,7,7,8,6,4,4,8,8,7,4],
+   "events": [6,9,4,4,4,4,4,9,4,4,4,7],
+   "calm": [5,7,7,6,8,6,4,4,8,8,7,4],
+   "happening": {
+    "0": "Carnival of Blacks and Whites in Pasto, early January",
+    "1": "Barranquilla Carnival, February 6–9, 2027",
+    "7": "Medellín's Flower Festival, early August",
+    "11": "Medellín's Christmas lights"
+   }
+  },
+  "328": {
+   "weather": [6,6,7,7,5,4,5,6,7,7,6,5],
+   "value": [7,7,7,7,7,7,7,7,7,7,7,6],
+   "events": [4,7,4,4,6,4,4,4,4,4,4,4],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {
+    "1": "Mashramani, Republic Day, February 23"
+   }
+  },
+  "740": {
+   "weather": [5,6,6,6,5,5,6,7,8,8,7,5],
+   "value": [7,7,7,7,7,7,7,7,7,7,7,6],
+   "events": [5,4,4,4,4,4,7,4,4,4,4,7],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {
+    "6": "Keti Koti on July 1, celebrating the end of slavery"
+   }
+  },
+  "254": {
+   "weather": [5,6,6,6,5,5,6,7,8,8,7,5],
+   "value": [7,7,7,7,7,7,7,7,7,7,7,6],
+   "events": [6,8,4,4,4,4,4,4,4,4,4,4],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {
+    "1": "Carnival, with masked Touloulou balls (January to February)"
+   }
+  },
+  "218": {
+   "weather": [6,6,6,6,7,8,8,8,8,7,7,6],
+   "value": [5,5,6,7,7,5,4,4,6,7,7,4],
+   "events": [3,6,3,4,4,8,4,4,4,4,6,5],
+   "calm": [5,5,6,7,7,5,4,4,6,7,7,4],
+   "happening": {
+    "1": "Carnival, with water and foam fights in the Andes",
+    "5": "Inti Raymi in the highlands around the June solstice",
+    "10": "Día de los Difuntos on November 2, with guagua bread and colada morada"
+   }
+  },
+  "068": {
+   "weather": [5,5,4,6,8,9,9,9,8,6,5,4],
+   "value": [8,8,8,7,6,5,4,5,6,7,8,6],
+   "events": [6,10,4,4,4,4,4,6,4,4,5,4],
+   "calm": [8,8,8,7,6,5,4,5,6,7,8,6],
+   "happening": {
+    "0": "Alasitas fair in La Paz, January 24, for miniature wishes",
+    "1": "Oruro Carnival, a UNESCO-listed festival of dance",
+    "7": "Independence Day, August 6"
+   }
+  },
+  "076": {
+   "weather": [7,7,7,7,7,7,7,7,8,8,7,7],
+   "value": [3,2,6,7,8,6,4,6,7,7,7,3],
+   "events": [6,10,4,4,4,8,4,4,4,4,4,8],
+   "calm": [3,2,6,7,8,6,5,6,7,7,7,3],
+   "happening": {
+    "1": "Carnival, February 5–9, 2027, from Rio's samba parades to Salvador's street parties",
+    "5": "Festas Juninas, the June harvest festivals, biggest in the Northeast",
+    "11": "New Year's Eve on Copacabana beach, dressed in white"
+   }
+  },
+  "600": {
+   "weather": [4,4,5,7,8,7,7,8,8,7,6,4],
+   "value": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "events": [4,6,4,4,4,4,4,4,4,4,4,5],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {
+    "1": "Carnival in Encarnación"
+   }
+  },
+  "858": {
+   "weather": [9,9,8,6,5,3,3,4,5,7,8,9],
+   "value": [3,3,6,7,8,8,7,8,8,7,6,4],
+   "events": [6,9,6,4,4,4,4,4,4,4,4,6],
+   "calm": [3,3,6,7,8,8,7,8,8,7,6,4],
+   "happening": {
+    "0": "Carnival begins: the longest in the world, with candombe drumming",
+    "1": "Desfile de Llamadas candombe parades in Montevideo",
+    "2": "Semana Criolla gaucho festival during Easter week"
+   }
+  },
+  "032": {
+   "weather": [8,8,8,7,5,4,4,5,6,8,8,8],
+   "value": [4,5,6,7,8,6,5,7,8,7,6,5],
+   "events": [5,6,5,4,4,4,4,8,4,4,7,5],
+   "calm": [4,5,6,7,8,6,5,7,8,7,6,5],
+   "happening": {
+    "1": "Carnival in the northwest, as in Humahuaca",
+    "7": "Tango BA festival and world championship in Buenos Aires",
+    "10": "Day of Tradition gaucho celebrations in San Antonio de Areco"
+   }
+  },
+  "152": {
+   "weather": [9,9,8,6,4,3,3,4,6,7,8,9],
+   "value": [4,4,6,7,8,7,5,7,6,7,6,4],
+   "events": [5,7,6,4,4,4,4,4,9,4,4,5],
+   "calm": [4,4,6,7,8,7,5,7,6,7,6,4],
+   "happening": {
+    "1": "Tapati Rapa Nui festival on Easter Island",
+    "2": "Grape harvest festivals in the wine valleys",
+    "8": "Fiestas Patrias, September 18–19: fondas, empanadas and cueca"
+   }
+  },
+  "238": {
+   "weather": [8,8,6,4,3,2,2,3,4,6,7,8],
+   "value": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "events": [3,3,3,3,3,3,3,3,3,3,3,3],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {}
+  },
+  "012": {
+   "weather": [5,6,7,8,8,7,5,5,7,8,7,5],
+   "value": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "events": [6,4,4,4,4,4,4,4,4,4,4,5],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {
+    "0": "Yennayer, the Amazigh new year, on January 12"
+   }
+  },
+  "024": {
+   "weather": [6,6,6,6,7,7,7,7,7,7,6,6],
+   "value": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "events": [4,8,4,4,4,4,4,4,4,4,4,4],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {
+    "1": "Carnival in Luanda"
+   }
+  },
+  "204": {
+   "weather": [8,8,7,6,5,4,5,6,5,6,7,8],
+   "value": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "events": [9,4,4,4,4,4,4,4,4,4,4,5],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {
+    "0": "Vodun Days and the national Vodun festival on January 10, in Ouidah"
+   }
+  },
+  "072": {
+   "weather": [5,5,6,7,8,8,8,8,8,7,6,5],
+   "value": [8,8,8,6,5,4,4,4,4,6,8,8],
+   "events": [4,4,4,4,4,5,7,6,5,4,5,4],
+   "calm": [9,9,8,6,5,4,3,3,4,6,8,9],
+   "happening": {
+    "6": "The Okavango Delta's floodwaters near their peak, drawing wildlife in",
+    "10": "Zebra herds gather on the Makgadikgadi Pans in the rains"
+   }
+  },
+  "108": {
+   "weather": [6,6,6,5,6,8,8,8,7,6,5,6],
+   "value": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "events": [4,4,4,4,4,4,4,4,4,4,4,4],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {}
+  },
+  "120": {
+   "weather": [8,8,7,6,6,5,4,4,5,6,7,8],
+   "value": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "events": [4,4,4,4,4,4,4,4,4,4,4,4],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {}
+  },
+  "178": {
+   "weather": [6,6,6,6,6,7,7,7,7,6,6,6],
+   "value": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "events": [4,4,4,4,4,4,4,4,4,4,4,4],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {}
+  },
+  "384": {
+   "weather": [8,7,7,6,5,5,6,6,6,6,7,8],
+   "value": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "events": [4,4,4,4,4,4,4,4,4,6,4,4],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {
+    "9": "Abissa, the N'zima people's festival in Grand-Bassam (late October or early November)"
+   }
+  },
+  "262": {
+   "weather": [8,8,7,6,4,3,2,2,4,6,8,8],
+   "value": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "events": [6,4,4,4,4,4,4,4,4,4,6,7],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {
+    "0": "Whale sharks in the Gulf of Tadjoura (November to January)",
+    "10": "Whale shark season begins in the Gulf of Tadjoura",
+    "11": "Whale sharks gather in the Gulf of Tadjoura"
+   }
+  },
+  "818": {
+   "weather": [7,8,8,8,7,5,4,4,6,8,8,7],
+   "value": [4,5,6,6,7,8,7,7,7,6,5,4],
+   "events": [5,7,5,6,5,4,4,4,4,7,5,5],
+   "calm": [5,5,6,6,7,8,7,7,7,6,5,4],
+   "happening": {
+    "1": "Sun festival at Abu Simbel on February 22, when sunrise lights the inner sanctuary",
+    "4": "Sham el-Nessim, the ancient spring festival, picnics on the Nile",
+    "9": "The Abu Simbel sunrise alignment repeats on October 22"
+   }
+  },
+  "226": {
+   "weather": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "value": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "events": [4,4,4,4,4,4,4,4,4,4,4,4],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {}
+  },
+  "232": {
+   "weather": [7,7,8,8,7,6,5,5,7,8,8,7],
+   "value": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "events": [7,4,4,4,6,4,4,4,4,4,4,4],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {
+    "0": "Timket celebrations in Asmara, January 19",
+    "4": "Independence Day, May 24"
+   }
+  },
+  "748": {
+   "weather": [6,6,6,7,8,8,8,8,8,7,6,6],
+   "value": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "events": [6,4,4,4,4,4,4,6,8,4,4,6],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {
+    "0": "Incwala, the sacred kingship ceremony (December to January)",
+    "7": "Umhlanga Reed Dance, late August or early September",
+    "11": "Incwala, the sacred kingship ceremony, begins"
+   }
+  },
+  "266": {
+   "weather": [6,6,6,6,6,7,8,8,7,6,6,6],
+   "value": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "events": [4,4,4,4,4,4,6,6,6,4,4,4],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {
+    "6": "Humpback whales off Loango National Park (July to September)"
+   }
+  },
+  "270": {
+   "weather": [9,9,9,8,7,5,4,4,4,6,8,9],
+   "value": [5,5,5,6,7,8,8,8,8,7,6,5],
+   "events": [4,5,4,4,5,4,4,4,4,4,4,5],
+   "calm": [5,5,5,6,7,8,8,8,8,7,6,5],
+   "happening": {}
+  },
+  "288": {
+   "weather": [8,8,7,6,5,4,5,5,5,6,7,8],
+   "value": [7,7,7,7,7,7,7,7,7,7,7,4],
+   "events": [5,4,6,4,4,4,4,8,4,4,4,8],
+   "calm": [8,8,8,8,8,8,8,8,8,8,8,5],
+   "happening": {
+    "2": "Independence Day, March 6",
+    "7": "Homowo harvest festival in Accra, and the Chale Wote street art festival",
+    "11": "December in Ghana: concerts, parties and homecomings"
+   }
+  },
+  "324": {
+   "weather": [8,8,7,6,5,4,4,4,4,5,7,8],
+   "value": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "events": [4,4,4,4,4,4,4,4,4,4,4,4],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {}
+  },
+  "624": {
+   "weather": [8,8,7,6,5,4,4,4,4,5,7,8],
+   "value": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "events": [4,8,4,4,4,4,4,4,4,4,4,4],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {
+    "1": "Carnival in Bissau, with masks from the Bijagós islands"
+   }
+  },
+  "404": {
+   "weather": [8,8,7,5,5,7,8,8,8,7,6,7],
+   "value": [5,6,7,9,9,6,4,3,4,6,7,5],
+   "events": [4,4,4,4,4,4,9,10,7,4,6,5],
+   "calm": [5,6,7,9,9,6,4,3,4,6,7,5],
+   "happening": {
+    "6": "The Great Migration arrives in the Maasai Mara (July to October)",
+    "7": "Wildebeest crossing the Mara River",
+    "8": "The migration lingers in the Mara",
+    "10": "Lamu Cultural Festival on the Swahili coast"
+   }
+  },
+  "426": {
+   "weather": [7,7,7,6,5,4,4,5,6,7,7,7],
+   "value": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "events": [4,4,4,4,4,4,4,4,4,4,4,4],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {}
+  },
+  "430": {
+   "weather": [8,8,7,6,5,3,3,4,4,5,7,8],
+   "value": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "events": [4,4,4,4,4,4,4,4,4,4,4,4],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {}
+  },
+  "450": {
+   "weather": [3,3,4,7,8,8,8,9,9,9,8,5],
+   "value": [8,8,8,7,7,6,5,5,6,6,7,6],
+   "events": [4,4,4,4,4,6,6,7,7,6,8,4],
+   "calm": [9,9,9,8,7,6,5,5,6,6,7,7],
+   "happening": {
+    "5": "Independence Day, June 26",
+    "6": "Humpback whales off Île Sainte-Marie (July to September)",
+    "10": "Baobabs leafing out and lemurs carrying new babies"
+   }
+  },
+  "454": {
+   "weather": [5,5,5,7,8,8,8,8,8,7,6,5],
+   "value": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "events": [4,4,4,4,4,4,4,4,4,4,4,4],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {}
+  },
+  "478": {
+   "weather": [7,7,7,6,5,4,3,3,4,6,7,7],
+   "value": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "events": [4,4,4,4,4,4,4,4,4,4,4,4],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {}
+  },
+  "508": {
+   "weather": [5,5,6,7,8,8,8,8,8,7,6,5],
+   "value": [6,7,7,7,8,7,6,6,6,7,7,4],
+   "events": [4,4,4,4,4,4,6,6,6,6,4,5],
+   "calm": [6,7,8,8,8,7,6,6,6,7,7,4],
+   "happening": {
+    "6": "Humpback whales along the coast (July to October)"
+   }
+  },
+  "516": {
+   "weather": [5,5,6,7,8,8,8,8,8,7,6,5],
+   "value": [8,8,8,7,6,5,4,3,4,6,7,6],
+   "events": [4,4,5,4,4,4,5,7,7,6,4,4],
+   "calm": [8,8,8,7,6,5,4,3,4,6,7,6],
+   "happening": {
+    "7": "Dry-season wildlife crowds the waterholes of Etosha"
+   }
+  },
+  "566": {
+   "weather": [7,7,6,6,5,4,4,4,5,6,7,7],
+   "value": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "events": [4,4,4,4,4,4,4,8,4,4,4,6],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {
+    "7": "Osun-Osogbo festival at the sacred grove, August"
+   }
+  },
+  "646": {
+   "weather": [6,5,5,4,5,8,9,9,8,6,5,6],
+   "value": [6,6,7,8,8,6,5,5,6,7,7,6],
+   "events": [4,4,4,4,4,4,4,4,7,4,4,4],
+   "calm": [7,7,8,8,8,6,5,5,6,7,7,6],
+   "happening": {
+    "8": "Kwita Izina, the baby gorilla naming ceremony (often in September)"
+   }
+  },
+  "686": {
+   "weather": [9,9,9,8,7,5,4,4,4,6,8,9],
+   "value": [5,5,5,6,7,8,8,8,8,7,6,5],
+   "events": [4,4,4,4,6,4,4,4,4,4,4,4],
+   "calm": [5,5,5,6,7,8,8,8,8,7,6,5],
+   "happening": {
+    "4": "Saint-Louis Jazz Festival, usually late May or early June"
+   }
+  },
+  "694": {
+   "weather": [8,8,7,7,5,4,3,3,4,5,7,8],
+   "value": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "events": [4,4,4,4,4,4,4,4,4,4,4,4],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {}
+  },
+  "834": {
+   "weather": [8,8,6,4,5,7,8,8,8,7,6,7],
+   "value": [5,5,7,9,9,6,4,3,4,6,7,5],
+   "events": [6,9,5,4,4,5,7,7,5,4,4,4],
+   "calm": [5,5,7,9,9,6,4,3,4,6,7,5],
+   "happening": {
+    "1": "Calving season in the southern Serengeti, and Sauti za Busara music festival in Zanzibar",
+    "6": "The migration heads north toward the Mara River"
+   }
+  },
+  "768": {
+   "weather": [8,8,7,6,5,4,5,6,5,6,7,8],
+   "value": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "events": [4,4,4,4,4,4,4,4,4,4,4,4],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {}
+  },
+  "788": {
+   "weather": [5,5,6,8,9,8,6,6,8,8,6,5],
+   "value": [8,8,7,6,6,4,2,2,4,6,8,8],
+   "events": [4,4,4,4,4,4,6,6,4,4,4,6],
+   "calm": [8,8,7,6,6,4,2,2,4,6,8,8],
+   "happening": {
+    "6": "Carthage International Festival in the Roman theater (July to August)",
+    "11": "Sahara Festival in Douz, late December"
+   }
+  },
+  "894": {
+   "weather": [4,4,5,6,8,8,8,8,8,6,5,4],
+   "value": [8,8,8,8,7,6,5,5,5,6,8,8],
+   "events": [4,4,6,6,4,4,4,4,4,6,6,4],
+   "calm": [9,9,9,8,6,5,4,4,5,6,8,9],
+   "happening": {
+    "2": "Victoria Falls at its thunderous peak (March to May)",
+    "9": "Millions of fruit bats arrive at Kasanka (late October to December)"
+   }
+  },
+  "716": {
+   "weather": [4,4,5,6,8,8,8,8,8,6,5,4],
+   "value": [8,8,8,8,7,6,5,5,5,6,8,8],
+   "events": [4,4,6,6,4,4,4,4,4,4,4,4],
+   "calm": [9,9,9,8,6,5,4,4,5,6,8,9],
+   "happening": {
+    "2": "Victoria Falls at full flood (March to May)"
+   }
+  },
+  "376": {
+   "weather": [5,6,7,8,8,7,6,6,7,8,7,6],
+   "value": [8,8,6,5,6,6,5,5,4,6,8,6],
+   "events": [4,4,5,6,4,4,4,4,6,6,4,6],
+   "calm": [8,8,6,5,6,6,5,5,4,6,8,6],
+   "happening": {}
+  },
+  "400": {
+   "weather": [4,5,7,9,8,6,5,5,7,9,7,5],
+   "value": [8,8,7,5,6,7,6,6,6,5,7,8],
+   "events": [4,4,4,4,4,4,4,4,4,4,4,4],
+   "calm": [8,8,7,5,6,7,6,6,6,5,7,8],
+   "happening": {}
+  },
+  "414": {
+   "weather": [7,7,7,6,4,2,1,1,3,6,8,7],
+   "value": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "events": [4,6,4,4,4,4,4,4,4,4,4,4],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {
+    "1": "National and Liberation Days, February 25–26"
+   }
+  },
+  "512": {
+   "weather": [8,8,7,6,4,3,4,4,4,6,8,8],
+   "value": [5,5,6,7,8,8,7,7,8,7,6,5],
+   "events": [4,4,4,4,4,4,7,7,4,4,4,4],
+   "calm": [5,5,6,7,8,8,7,7,8,7,6,5],
+   "happening": {
+    "6": "Khareef, the monsoon season that turns Salalah green (July to September)"
+   }
+  },
+  "634": {
+   "weather": [8,8,7,6,4,2,1,1,3,6,8,8],
+   "value": [6,6,6,6,6,7,7,7,7,6,6,6],
+   "events": [4,4,4,4,4,4,4,4,4,4,4,6],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {
+    "11": "National Day, December 18"
+   }
+  },
+  "682": {
+   "weather": [8,8,7,6,4,2,1,1,3,6,8,8],
+   "value": [6,6,6,6,6,7,7,7,7,6,6,6],
+   "events": [5,5,4,4,4,4,4,4,5,5,4,5],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {}
+  },
+  "784": {
+   "weather": [8,9,8,7,5,3,2,2,4,7,8,9],
+   "value": [4,4,5,6,8,9,9,9,8,6,5,3],
+   "events": [6,5,4,4,4,4,4,4,4,4,5,7],
+   "calm": [4,4,5,6,8,9,9,9,8,6,5,3],
+   "happening": {
+    "0": "Dubai Shopping Festival (mid-December to January)",
+    "11": "National Day, December 2"
+   }
+  },
+  "398": {
+   "weather": [2,2,4,6,8,9,9,9,8,6,3,2],
+   "value": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "events": [4,4,8,4,4,4,4,4,4,4,4,4],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {
+    "2": "Nauryz, the spring new year, March 21–23"
+   }
+  },
+  "417": {
+   "weather": [2,2,4,6,7,9,9,9,8,5,3,2],
+   "value": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "events": [4,4,7,4,4,4,6,4,4,4,4,4],
+   "calm": [9,9,9,9,8,6,5,5,7,8,9,9],
+   "happening": {
+    "2": "Nooruz, the spring new year, around March 21",
+    "6": "Herders' yurt camps in the high summer pastures"
+   }
+  },
+  "762": {
+   "weather": [2,2,4,6,7,8,9,9,8,6,3,2],
+   "value": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "events": [4,4,7,4,4,4,4,4,4,4,4,4],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {
+    "2": "Navruz, the spring new year, around March 21"
+   }
+  },
+  "795": {
+   "weather": [4,4,6,8,8,6,5,5,7,8,6,4],
+   "value": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "events": [4,4,6,4,4,4,4,4,4,4,4,4],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {}
+  },
+  "860": {
+   "weather": [3,4,6,8,9,7,6,6,8,9,6,3],
+   "value": [9,9,8,6,6,7,8,8,6,5,8,9],
+   "events": [4,4,7,4,4,4,4,6,4,4,4,4],
+   "calm": [9,9,8,6,6,7,8,8,6,5,8,9],
+   "happening": {
+    "2": "Navruz, the spring new year, around March 21",
+    "7": "Sharq Taronalari music festival in Samarkand (late August, in odd-numbered years)"
+   }
+  },
+  "586": {
+   "weather": [5,6,7,8,7,6,7,7,8,8,6,5],
+   "value": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "events": [4,4,4,4,4,4,4,4,4,4,4,4],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {}
+  },
+  "356": {
+   "weather": [8,8,7,6,4,4,4,4,5,7,8,8],
+   "value": [5,6,7,7,8,8,8,8,8,6,5,4],
+   "events": [6,5,10,5,4,4,4,5,5,10,7,6],
+   "calm": [5,6,7,7,8,8,8,8,8,6,5,4],
+   "happening": {
+    "0": "Pongal and Makar Sankranti kite festivals, mid-January",
+    "2": "Holi, the festival of colors (around March 22, 2027)",
+    "9": "Navratri, Durga Puja, and Diwali on October 29, 2027",
+    "10": "Pushkar Camel Fair in Rajasthan",
+    "11": "Hornbill Festival in Nagaland, December 1–10"
+   }
+  },
+  "524": {
+   "weather": [6,6,7,8,6,4,3,3,6,9,9,7],
+   "value": [7,7,6,5,7,9,9,9,6,4,5,6],
+   "events": [4,4,6,4,4,4,4,4,5,10,6,4],
+   "calm": [7,7,6,5,7,9,9,9,6,4,5,6],
+   "happening": {
+    "9": "Dashain and Tihar, the festival of lights, when even dogs get garlands",
+    "10": "Clear mountain views for trekking"
+   }
+  },
+  "064": {
+   "weather": [6,6,8,8,7,4,3,3,6,9,9,7],
+   "value": [7,7,5,5,6,8,8,8,6,4,5,6],
+   "events": [4,4,7,7,4,4,4,4,5,8,5,6],
+   "calm": [7,7,5,5,6,8,8,8,6,4,5,6],
+   "happening": {
+    "2": "Paro Tsechu masked dances (usually March or April, by the lunar calendar)",
+    "9": "Thimphu Tsechu masked dance festival (usually September or October)"
+   }
+  },
+  "050": {
+   "weather": [8,8,7,6,5,4,4,4,4,6,8,8],
+   "value": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "events": [4,6,4,8,4,4,4,4,4,5,4,4],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {
+    "1": "International Mother Language Day, February 21, born here",
+    "3": "Pohela Boishakh, the Bengali new year, April 14"
+   }
+  },
+  "144": {
+   "weather": [8,8,8,7,6,6,6,6,6,6,6,7],
+   "value": [4,5,6,6,8,8,6,6,8,8,7,4],
+   "events": [4,6,4,8,7,4,6,8,4,4,4,4],
+   "calm": [4,5,6,6,8,8,6,6,8,8,7,4],
+   "happening": {
+    "3": "Sinhala and Tamil New Year, April 13–14",
+    "4": "Vesak lanterns for the Buddha's birthday",
+    "7": "Esala Perahera in Kandy: torchlit processions with decorated elephants (July or August)"
+   }
+  },
+  "156": {
+   "weather": [3,4,6,8,8,7,6,6,8,9,6,4],
+   "value": [5,3,6,6,5,6,5,5,6,3,7,7],
+   "events": [7,10,4,5,4,6,4,4,7,7,4,4],
+   "calm": [6,2,6,6,4,6,4,4,6,2,7,7],
+   "happening": {
+    "0": "Harbin Ice and Snow World (January to February)",
+    "1": "Lunar New Year, February 6, 2027: lanterns, dumplings, fireworks, and the busiest travel week on Earth",
+    "5": "Dragon Boat races",
+    "8": "Mid-Autumn Festival, with mooncakes under the full moon",
+    "9": "Golden Week in early October: lovely weather, enormous crowds"
+   }
+  },
+  "158": {
+   "weather": [6,6,7,8,7,5,4,4,5,8,8,7],
+   "value": [6,4,6,6,7,7,6,6,6,6,7,7],
+   "events": [5,8,6,4,4,6,4,4,6,4,4,4],
+   "calm": [7,4,6,6,7,7,6,6,6,6,7,7],
+   "happening": {
+    "1": "Lantern Festival and sky lanterns at Pingxi, February 20, 2027"
+   }
+  },
+  "410": {
+   "weather": [3,3,6,9,8,6,4,4,7,9,7,4],
+   "value": [7,7,6,4,5,6,4,4,5,4,6,6],
+   "events": [5,6,4,8,7,4,5,4,6,7,5,5],
+   "calm": [7,7,6,3,5,6,4,4,4,3,6,6],
+   "happening": {
+    "1": "Seollal, the lunar new year, February 6, 2027",
+    "3": "Cherry blossoms, including Jinhae's festival",
+    "4": "Lotus Lantern Festival for the Buddha's birthday",
+    "8": "Chuseok, the harvest holiday",
+    "9": "Autumn leaves in the mountains"
+   }
+  },
+  "764": {
+   "weather": [8,8,7,6,5,5,5,5,5,6,8,8],
+   "value": [4,4,5,6,8,8,7,7,9,7,5,3],
+   "events": [4,6,4,10,4,4,4,4,4,5,9,5],
+   "calm": [4,4,5,6,8,8,7,7,9,7,5,3],
+   "happening": {
+    "1": "Chinese New Year in Bangkok's Chinatown",
+    "3": "Songkran, the April 13–15 new year water fight",
+    "10": "Loy Krathong and Yi Peng lanterns on the November full moon"
+   }
+  },
+  "418": {
+   "weather": [8,8,7,6,5,4,4,4,5,7,8,8],
+   "value": [5,6,6,6,7,8,8,8,8,7,6,5],
+   "events": [4,4,4,9,4,4,4,4,4,6,7,4],
+   "calm": [5,6,6,6,7,8,8,8,8,7,6,5],
+   "happening": {
+    "3": "Pi Mai, the Lao new year, mid-April",
+    "9": "Boat races and floating light boats at the end of Buddhist Lent",
+    "10": "That Luang Festival in Vientiane"
+   }
+  },
+  "116": {
+   "weather": [8,8,7,6,5,5,5,5,5,6,8,8],
+   "value": [5,5,6,6,7,8,8,8,8,7,6,4],
+   "events": [4,4,4,8,4,4,4,4,4,4,8,4],
+   "calm": [5,5,6,6,7,8,8,8,8,7,6,4],
+   "happening": {
+    "3": "Khmer New Year, mid-April",
+    "10": "Bon Om Touk water festival boat races in Phnom Penh"
+   }
+  },
+  "458": {
+   "weather": [6,6,7,7,7,7,7,7,7,6,6,5],
+   "value": [6,5,6,6,7,7,6,6,7,7,7,5],
+   "events": [7,8,4,4,4,4,4,6,4,6,4,4],
+   "calm": [6,5,6,6,7,7,6,6,7,7,7,5],
+   "happening": {
+    "0": "Thaipusam at the Batu Caves (January or February)",
+    "1": "Chinese New Year, February 6, 2027",
+    "7": "Merdeka Day, August 31",
+    "9": "Deepavali, October 29, 2027"
+   }
+  },
+  "096": {
+   "weather": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "value": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "events": [4,4,4,4,4,4,6,4,4,4,4,4],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {
+    "6": "The Sultan's birthday celebrations, July 15"
+   }
+  },
+  "360": {
+   "weather": [5,5,6,7,8,9,9,9,8,7,6,5],
+   "value": [6,6,7,7,7,5,3,3,6,7,7,4],
+   "events": [4,4,8,4,4,4,4,6,4,4,4,4],
+   "calm": [6,6,7,7,7,5,3,3,6,7,7,4],
+   "happening": {
+    "2": "Nyepi, Bali's Day of Silence, after a night of ogoh-ogoh monster parades (usually March)",
+    "7": "Independence Day, August 17, with village games"
+   }
+  },
+  "608": {
+   "weather": [8,8,8,8,7,5,4,4,4,5,6,7],
+   "value": [5,5,5,4,6,8,8,8,8,7,6,3],
+   "events": [8,4,7,4,4,4,4,4,6,4,4,8],
+   "calm": [5,5,5,4,6,8,8,8,8,7,6,3],
+   "happening": {
+    "0": "Sinulog in Cebu and Ati-Atihan in Kalibo, mid-January",
+    "2": "Holy Week processions (Easter is March 28, 2027)",
+    "8": "Christmas season begins in September, the first of the 'ber' months",
+    "11": "Simbang Gabi dawn masses and parol star lanterns everywhere"
+   }
+  },
+  "626": {
+   "weather": [5,5,5,6,7,8,8,8,8,7,6,5],
+   "value": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "events": [4,4,4,4,4,4,4,4,4,4,4,4],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {}
+  },
+  "036": {
+   "weather": [7,7,8,8,7,6,6,6,7,8,8,7],
+   "value": [3,5,6,6,8,8,7,7,6,6,6,3],
+   "events": [7,5,5,4,7,6,4,4,4,4,4,8],
+   "calm": [3,5,6,6,8,8,7,7,6,6,6,3],
+   "happening": {
+    "0": "Summer festivals, from the Sydney Festival to the Australian Open in Melbourne",
+    "4": "Vivid Sydney light festival (late May to June)",
+    "11": "New Year's Eve fireworks over Sydney Harbour"
+   }
+  },
+  "242": {
+   "weather": [5,5,5,7,8,8,8,8,8,7,6,5],
+   "value": [7,7,7,7,6,4,3,3,5,6,7,5],
+   "events": [4,4,4,4,4,4,4,7,4,4,4,4],
+   "calm": [7,7,7,7,6,4,3,3,5,6,7,5],
+   "happening": {
+    "7": "Hibiscus Festival in Suva"
+   }
+  },
+  "598": {
+   "weather": [5,5,5,6,7,8,8,8,8,7,6,5],
+   "value": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "events": [4,4,4,4,4,4,4,8,9,4,4,4],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {
+    "7": "Mount Hagen Cultural Show: sing-sings of painted dancers",
+    "8": "Goroka Show, a gathering of highland groups in feathers and paint"
+   }
+  },
+  "090": {
+   "weather": [5,5,5,6,7,8,8,8,8,7,6,5],
+   "value": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "events": [4,4,4,4,4,4,4,4,4,4,4,4],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {}
+  },
+  "548": {
+   "weather": [5,5,5,6,7,8,8,8,8,7,6,5],
+   "value": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "events": [4,4,4,8,8,8,4,4,4,4,4,4],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {
+    "3": "Land diving on Pentecost Island, the original bungee jump (April to June)"
+   }
+  },
+  "540": {
+   "weather": [6,6,6,7,8,7,7,7,8,8,7,6],
+   "value": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "events": [4,4,4,4,4,4,4,4,4,4,4,4],
+   "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
+   "happening": {}
   }
  }
 }
