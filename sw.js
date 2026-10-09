@@ -1,12 +1,13 @@
 // Offline support. Pages and data are fetched fresh when online (so edits made
 // in Obsidian show up right away) and served from the cache when offline.
 // Bump VERSION to clear old caches.
-const VERSION = 'hello-world-v1';
+const VERSION = 'hello-world-v4';
 const SHELL = ['./', 'index.html', 'manifest.webmanifest', 'data/countries.json',
-  'data/world-paths.json', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png'];
+  'data/world-paths.json', 'data/travel.json', 'data/advisories.json', 'data/charts.json', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png'];
 
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(VERSION).then(c => c.addAll(SHELL)).then(() => self.skipWaiting()));
+  // cache each file on its own, so one missing data file can't stop the app from installing
+  e.waitUntil(caches.open(VERSION).then(c => Promise.allSettled(SHELL.map(u => c.add(u)))).then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', e => {

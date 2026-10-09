@@ -1,0 +1,50 @@
+# Re-reads the US State Department's travel advisories every morning and
+# updates data/advisories.json when a level changes. GitHub Pages then
+# republishes the app, so striped "Do Not Travel" countries stay current.
+name: Refresh travel advisories
+
+on:
+  schedule:
+    - cron: "23 15 * * *"   # daily, 8:23 a.m. Pacific daylight time (7:23 standard)
+  workflow_dispatch:         # "Run workflow" button on the Actions tab
+  pull_request:              # dry run whenever the script or this file changes
+    paths:
+      - scripts/update_advisories.py
+      - .github/workflows/advisories.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  # real updates take turns so their pushes never collide; pull-request dry runs get their own lane
+  group: ${{ github.event_name == 'pull_request' && format('dry-run-{0}', github.workflow) || 'data-refresh' }}
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check the advisory feed (dry run)
+        if: github.event_name == 'pull_request'
+        run: python3 scripts/update_advisories.py --dry-run
+
+      - name: Update advisories
+        if: github.event_name != 'pull_request'
+        run: python3 scripts/update_advisories.py | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit if anything changed
+        if: github.event_name != 'pull_request'
+        run: |
+          if git diff --quiet -- data/advisories.json; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add data/advisories.json
+          git commit -m "Refresh travel advisories"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push
