@@ -89,8 +89,9 @@ def main():
             try:
                 return cid, "ok", fetch(cc).get("feed", {})
             except urllib.error.HTTPError as e:
-                if e.code == 404:
-                    return cid, "no_store", None   # no Apple Music storefront there
+                # Apple answers 404, or a 500 that never clears, for countries where Apple Music isn't sold
+                if e.code == 404 or (e.code == 500 and attempt >= 1):
+                    return cid, "no_store", None
                 err = f"HTTP {e.code}"
             except Exception as e:
                 err = type(e).__name__
@@ -125,7 +126,7 @@ def main():
     if failed:
         print("Failed:", ", ".join(failed))
     if os.environ.get("GITHUB_ACTIONS"):
-        print(f"::notice title=Charts::Feed: {working_feed.split('/api')[0] if working_feed else 'none'}. {len(out)} countries with charts, {len(no_store)} without a storefront, {len(failed)} failed. "
+        print(f"::notice title=Charts::Feed: {working_feed.split('/api')[0] if working_feed else 'none'}. {len(out)} countries with charts, {len(no_store)} without an Apple Music storefront, {len(failed)} failed. "
               + " | ".join("#1 in " + s for s in sample)
               + (f" | Failed: {', '.join(failed[:12])}" + (" ..." if len(failed) > 12 else "") if failed else ""))
 
