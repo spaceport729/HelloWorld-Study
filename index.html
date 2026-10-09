@@ -90,6 +90,24 @@ section.card p{margin:.3rem 0}
 .note{max-width:760px;margin:0 auto;padding:0 20px 30px;color:var(--soft);font-size:.85rem}
 @media (min-width:900px){ main{padding-top:20px} }
 
+/* ---------- iPad landscape and other wide, short screens: map on the left, a scrolling panel on the right ---------- */
+@media (min-width:900px) and (orientation:landscape){
+  html,body{height:100%}
+  body{display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,38%);grid-template-rows:auto auto minmax(0,1fr) auto;overflow:hidden}
+  header{grid-column:1;grid-row:1;max-width:none;width:100%;padding:14px 20px 4px}
+  .dialblk{grid-column:1;grid-row:2;max-width:none;width:100%}
+  .dialblk .dial{margin-top:8px}
+  .mapwrap{grid-column:1;grid-row:3;max-width:none;width:100%;min-height:0;padding:4px 8px 0}
+  .mapwrap svg#map{width:100%;height:100%}
+  .toast{grid-column:1;grid-row:4;max-width:none;margin:4px 0 8px}
+  .side{grid-column:2;grid-row:1 / 5;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
+    border-left:1px solid var(--rule);background:var(--panel)}
+  .side main{padding-top:4px}
+  .side .tw,.side main,.side .note{max-width:none}
+  .side .weights{background:var(--bg)}
+  .country h2{font-size:clamp(2.2rem,4vw,3.2rem)}
+}
+
 /* ---------- When to go mode ---------- */
 .modes{display:inline-flex;gap:4px;margin-top:12px;padding:4px;background:var(--panel);border:1px solid var(--rule);border-radius:999px}
 .modes button{font:600 .95rem var(--body);color:var(--soft);background:none;border:0;border-radius:999px;padding:6px 16px;cursor:pointer}
@@ -183,7 +201,7 @@ body.travel .pin.x{display:block;fill:var(--unsafe)}
     <button type="button" id="modeTravel" aria-pressed="false">When to go</button>
   </div>
 </header>
-<div class="tw travel-only">
+<div class="tw travel-only dialblk">
   <div class="dial">
     <div class="dial-top"><span class="month" id="monthName"></span><span class="dial-hint">Tap a lit-up country for its whole year</span></div>
     <input type="range" id="monthRange" min="0" max="11" step="1" value="0" aria-label="Month">
@@ -196,6 +214,7 @@ body.travel .pin.x{display:block;fill:var(--unsafe)}
   <button class="worldbtn" id="worldbtn" type="button">Show whole world</button>
 </div>
 <div class="toast" id="toast" aria-live="polite"></div>
+<div class="side" id="side">
 <div class="tw travel-only">
   <section class="weights" aria-labelledby="wh">
     <h2 id="wh">What matters on this trip</h2>
@@ -220,6 +239,7 @@ body.travel .pin.x{display:block;fill:var(--unsafe)}
   <p class="intro">Tap a colored country or a pin on the map to start.</p>
 </main>
 <p class="note explore-only">Prototype, written late September 2026. The "This season" notes are calendar-based, not a live feed; listening links open specific albums, songs, or playlists in Apple Music. Pronunciation uses your device's voices, so it appears only where a matching language voice is installed; otherwise follow the respelling.</p>
+</div>
 
 <script>
 async function main(){
@@ -282,7 +302,8 @@ const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 function setVB(v){vb=v; map.setAttribute('viewBox',v.join(' '));
   const k=v[2]/960; gP.querySelectorAll('.pin').forEach(c=>c.setAttribute('r',3.2*k)); gP.querySelectorAll('.ring').forEach(c=>c.setAttribute('r',6*k)); 
   // tap targets stay about 11 screen pixels in radius at any screen width and zoom
-  const px=map.getBoundingClientRect().width||960; gP.querySelectorAll('.hit').forEach(c=>c.setAttribute('r',11*v[2]/px));}
+  const r=map.getBoundingClientRect(); const scale=Math.min((r.width||960)/v[2],(r.height||500)/v[3])||1;
+  gP.querySelectorAll('.hit').forEach(c=>c.setAttribute('r',11/scale));}
 window.addEventListener('resize',()=>setVB(vb));
 function animateTo(target){
   if(reduce){setVB(target);return;}
@@ -302,6 +323,7 @@ function zoomTo(id){
   animateTo([cx-w/2, cy-h/2, w, h]);
 }
 
+function sideScrolls(){ return matchMedia('(min-width:900px) and (orientation:landscape)').matches; }
 function esc(s){return s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 // notes can have several paragraphs, separated by a blank line
 function paras(s){return s.split('\n\n').map(p=>`<p>${esc(p)}</p>`).join('');}
@@ -325,7 +347,8 @@ function select(id){
       c.links?`<div class="listen">${c.links.map(l=>`<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join('')}</div>`:''
     }</section>`).join('')}
   </article>`;
-  const h=panel.querySelector('h2'); if(h.getBoundingClientRect().top>window.innerHeight*0.8) h.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});
+  if(sideScrolls()) document.getElementById('side').scrollTop=0;
+  const h=panel.querySelector('h2'); if(!sideScrolls() && h.getBoundingClientRect().top>window.innerHeight*0.8) h.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});
 }
 
 // A plain language code (es) takes any voice for that language. A code with a region (pt-PT) means the
