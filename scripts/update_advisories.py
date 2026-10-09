@@ -41,7 +41,8 @@ ALIASES = {
     "the bahamas": "bahamas", "the gambia": "gambia",
     "turkey turkiye": "turkey", "turkiye": "turkey",
     "eswatini swaziland": "eswatini", "swaziland": "eswatini",
-    "kyrgyz republic": "kyrgyzstan",
+    "kyrgyz republic": "kyrgyzstan", "the kyrgyz republic": "kyrgyzstan",
+    "kingdom of denmark": "denmark",
     "czech republic": "czechia",
     "timor leste": "timor leste", "east timor": "timor leste",
     # Palestine on the map covers both of these advisories
@@ -51,8 +52,10 @@ ALIASES = {
 
 
 def norm(name):
-    s = unicodedata.normalize("NFKD", name).encode("ascii", "ignore").decode().lower()
+    s = re.sub(r"['\u2018\u2019`]", "", name)          # Côte d'Ivoire and Côte d’Ivoire match
+    s = unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode().lower()
     s = re.sub(r"[^a-z0-9]+", " ", s).strip()
+    s = re.sub(r"\s*travel advisory$", "", s)            # "Mexico Travel Advisory"
     return s
 
 
@@ -66,10 +69,16 @@ def parse_item(item):
     date = None
     pub = item.findtext("pubDate")
     if pub:
+        pub = pub.strip()
         try:
             date = email.utils.parsedate_to_datetime(pub).date().isoformat()
         except (TypeError, ValueError):
-            date = None
+            for fmt in ("%a, %d %b %Y", "%d %b %Y", "%Y-%m-%d", "%m/%d/%Y"):
+                try:
+                    date = datetime.datetime.strptime(pub[:len(datetime.date.today().strftime(fmt)) + 2].strip(), fmt).date().isoformat()
+                    break
+                except ValueError:
+                    continue
     return name, level, date
 
 
@@ -124,7 +133,7 @@ def main():
         if "note" in old and old.get("level") == level:
             entry["note"] = old["note"]   # keep hand-written notes only while the level is unchanged
         stored[cid] = entry
-        changes.append(f"{countries[cid]['name']}: Level {old.get('level', '?')} -> {level}" + (f" (issued {date})" if date else "") + f"  [{src}]")
+        changes.append(f"{countries[cid]['name']}: Level {old.get('level', '?')} -> {level}" + (f" (issued {date})" if date else " (no date)") + f"  [{src}]")
 
     today = datetime.date.today().isoformat()
     last = data.get("checked", "2000-01-01")
