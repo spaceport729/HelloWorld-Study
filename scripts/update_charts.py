@@ -8,6 +8,7 @@ fails this time, its previous chart is kept.
 Usage: python3 scripts/update_charts.py [--dry-run]
 Uses only the Python standard library.
 """
+import concurrent.futures
 import datetime
 import json
 import os
@@ -80,34 +81,41 @@ def main():
             print(f"::error title=Charts::{msg}")
         sys.exit(msg)
 
-    for cid in sorted(countries):
+    def get_chart(cid):
+        """Fetch one country, retrying slow or flaky requests. Returns (cid, outcome, payload)."""
         cc = ALPHA2.get(cid)
-        if not cc:
-            continue
-        try:
-            feed = fetch(cc).get("feed", {})
-        except urllib.error.HTTPError as e:
-            if e.code == 404:
-                no_store.append(countries[cid]["name"])   # no Apple Music storefront there
-            else:
-                failed.append(f"{countries[cid]['name']} (HTTP {e.code})")
-                if cid in prev:
-                    out[cid] = prev[cid]
-            continue
-        except Exception as e:  # network hiccup or bad JSON: keep last week's chart
-            failed.append(f"{countries[cid]['name']} ({type(e).__name__})")
-            if cid in prev:
-                out[cid] = prev[cid]
-            continue
-        finally:
-            time.sleep(0.25)   # be gentle with Apple's servers
+        err = None
+        for attempt in range(3):
+            try:
+                return cid, "ok", fetch(cc).get("feed", {})
+            except urllib.error.HTTPError as e:
+                if e.code == 404:
+                    return cid, "no_store", None   # no Apple Music storefront there
+                err = f"HTTP {e.code}"
+            except Exception as e:
+                err = type(e).__name__
+            time.sleep(1.5 * (attempt + 1))   # back off before retrying
+        return cid, "failed", err
 
+    # a few requests at a time: fast, but gentle on Apple's servers
+    with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:
+        results = list(pool.map(get_chart, [c for c in sorted(countries) if ALPHA2.get(c)]))
+
+    for cid, outcome, payload in results:
+        if outcome == "no_store":
+            no_store.append(countries[cid]["name"])
+            continue
+        if outcome == "failed":
+            failed.append(f"{countries[cid]['name']} ({payload})")
+            if cid in prev:
+                out[cid] = prev[cid]   # keep the last good chart
+            continue
         songs = []
-        for r in feed.get("results", [])[:10]:
+        for r in payload.get("results", [])[:10]:
             if r.get("name") and r.get("url"):
                 songs.append({"name": r["name"], "artist": r.get("artistName", ""), "url": r["url"]})
         if songs:
-            updated = (feed.get("updated") or "")[:10] or datetime.date.today().isoformat()
+            updated = (payload.get("updated") or "")[:10] or datetime.date.today().isoformat()
             out[cid] = {"updated": updated, "songs": songs}
 
     print(f"Charts for {len(out)} countries; no Apple Music storefront: {len(no_store)}; failed this run: {len(failed)}")
@@ -118,7 +126,8 @@ def main():
         print("Failed:", ", ".join(failed))
     if os.environ.get("GITHUB_ACTIONS"):
         print(f"::notice title=Charts::Feed: {working_feed.split('/api')[0] if working_feed else 'none'}. {len(out)} countries with charts, {len(no_store)} without a storefront, {len(failed)} failed. "
-              + " | ".join("#1 in " + s for s in sample))
+              + " | ".join("#1 in " + s for s in sample)
+              + (f" | Failed: {', '.join(failed[:12])}" + (" ..." if len(failed) > 12 else "") if failed else ""))
 
     if len(out) < MIN_EXPECTED:
         sys.exit(f"Only {len(out)} countries returned charts; Apple's feed may have changed. Leaving data/charts.json unchanged.")
