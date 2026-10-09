@@ -108,6 +108,11 @@ def main():
         if not prev or level > prev[0] or (level == prev[0] and (date or "") > (prev[1] or "")):
             found[cid] = (level, date, name)
 
+    if not found:
+        # The feed always has recent advisories for real countries, so zero matches
+        # means its format changed. Fail so GitHub emails a notice instead of going quiet.
+        sys.exit(f"None of the {len(items)} feed items matched a country on the map; the feed format may have changed.")
+
     changes = []
     for cid, (level, date, src) in sorted(found.items()):
         old = stored.get(cid, {})
@@ -134,6 +139,12 @@ def main():
     for c in changes:
         print("  -", c)
 
+    # one-line result as a GitHub annotation, visible on the run's summary page
+    import os
+    if os.environ.get("GITHUB_ACTIONS"):
+        print(f"::notice title=Advisories::{len(items)} feed items, {len(found)} matched, "
+              f"{len(changes)} changed" + (": " + "; ".join(changes) if changes else "") +
+              (f". Not on the map: {', '.join(sorted(set(unmatched)))}" if unmatched else ""))
     if dry:
         print("Dry run: nothing written.")
         return
