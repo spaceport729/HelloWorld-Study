@@ -1,0 +1,49 @@
+# Fetches each country's most-played songs on Apple Music every morning and
+# updates data/charts.json, which feeds the "On the charts now" card.
+name: Refresh music charts
+
+on:
+  schedule:
+    - cron: "47 15 * * *"   # daily, 8:47 a.m. Pacific daylight time (7:47 standard)
+  workflow_dispatch:
+  pull_request:              # dry run whenever the script or this file changes
+    paths:
+      - scripts/update_charts.py
+      - scripts/iso_codes.py
+      - .github/workflows/charts.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: data-refresh        # shared with the advisories job so their pushes never collide
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check the chart feed (dry run)
+        if: github.event_name == 'pull_request'
+        run: python3 scripts/update_charts.py --dry-run
+
+      - name: Update charts
+        if: github.event_name != 'pull_request'
+        run: python3 scripts/update_charts.py | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit if anything changed
+        if: github.event_name != 'pull_request'
+        run: |
+          git add data/charts.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Refresh music charts"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push

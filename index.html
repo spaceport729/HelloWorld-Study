@@ -86,6 +86,11 @@ section.card::before{content:"";position:absolute;left:0;top:10px;bottom:10px;wi
 section.card h3{font-family:var(--display);font-weight:400;font-size:1.3rem;margin:0 0 4px;line-height:1.2}
 section.card p{margin:.3rem 0}
 .listen{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:8px}
+.songs{margin:.4rem 0 0;padding-left:1.4rem;display:grid;gap:4px}
+.songs li{padding-left:2px}
+.songs a{color:var(--ink);font-weight:600;text-decoration-color:var(--dye);text-decoration-thickness:2px;text-underline-offset:3px}
+.songs span{display:block;color:var(--soft);font-size:.92rem}
+.chartnote{color:var(--soft);font-size:.85rem}
 .listen a{color:var(--ink);font-weight:600;text-decoration-color:var(--dye);text-decoration-thickness:2px;text-underline-offset:3px}
 .note{max-width:760px;margin:0 auto;padding:0 20px 30px;color:var(--soft);font-size:.85rem}
 @media (min-width:900px){ main{padding-top:20px} }
@@ -243,13 +248,15 @@ body.travel .pin.x{display:block;fill:var(--unsafe)}
 
 <script>
 async function main(){
-const [PATHS, COUNTRIES, TRAVEL, ADVISORIES] = await Promise.all([
+const [PATHS, COUNTRIES, TRAVEL, ADVISORIES, CHARTS] = await Promise.all([
   fetch("data/world-paths.json",{cache:"no-cache"}).then(r=>r.json()),
   fetch("data/countries.json",{cache:"no-cache"}).then(r=>r.json()),
   // travel scores are optional: if they don't load, the app works as before without the When to go view
   fetch("data/travel.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).then(d=>d&&d.countries||null).catch(()=>null),
   // State Department advisory levels: also optional, so a missing file never breaks the app
-  fetch("data/advisories.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).catch(()=>null)
+  fetch("data/advisories.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).catch(()=>null),
+  // this week's Apple Music charts: optional too
+  fetch("data/charts.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).catch(()=>null)
 ]);
 let travel=false;
 
@@ -323,6 +330,18 @@ function zoomTo(id){
   animateTo([cx-w/2, cy-h/2, w, h]);
 }
 
+// "On the charts now": the country's five most-played songs on Apple Music, placed right after its Music card
+function withCharts(id, html, cards){
+  const ch=CHARTS&&CHARTS.countries&&CHARTS.countries[id];
+  if(!ch||!ch.songs||!ch.songs.length) return html;
+  const when=ch.updated?` Updated ${esc(fmtShort(ch.updated))}.`:'';
+  const card=`<section class="card charts"><h3>On the charts now</h3>
+    <ol class="songs">${ch.songs.slice(0,5).map(s=>`<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a><span>${esc(s.artist)}</span></li>`).join('')}</ol>
+    <p class="chartnote">Most played on Apple Music in ${esc(COUNTRIES[id].name)}.${when}</p></section>`;
+  const i=cards.findIndex(c=>/^music\b/i.test(c.title||''));
+  const out=html.slice(); out.splice(i>=0?i+1:out.length,0,card); return out;
+}
+function fmtShort(d){ try{ return new Date(d+'T12:00:00').toLocaleDateString(undefined,{month:'long',day:'numeric'}); }catch(e){ return d; } }
 function sideScrolls(){ return matchMedia('(min-width:760px) and (orientation:landscape)').matches; }
 function esc(s){return s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 // notes can have several paragraphs, separated by a blank line
@@ -343,9 +362,9 @@ function select(id){
       <div class="sayrow"><span class="say">Say it: ${esc(info.word.sayIt)}</span><button type="button" class="hear" hidden>Hear it</button></div>
       ${paras(info.word.meaning)}</div>
     <div class="ask"><h3>Something to ask</h3>${paras(info.ask)}</div>
-    ${info.cards.map(c=>`<section class="card"><h3>${esc(c.title)}</h3>${paras(c.text)}${
+    ${withCharts(id,info.cards.map(c=>`<section class="card"><h3>${esc(c.title)}</h3>${paras(c.text)}${
       c.links?`<div class="listen">${c.links.map(l=>`<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join('')}</div>`:''
-    }</section>`).join('')}
+    }</section>`), info.cards).join('')}
   </article>`;
   if(sideScrolls()) document.getElementById('side').scrollTop=0;
   const h=panel.querySelector('h2'); if(!sideScrolls() && h.getBoundingClientRect().top>window.innerHeight*0.8) h.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});
