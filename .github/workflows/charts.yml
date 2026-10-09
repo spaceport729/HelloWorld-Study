@@ -16,7 +16,8 @@ permissions:
   contents: write
 
 concurrency:
-  group: data-refresh        # shared with the advisories job so their pushes never collide
+  # real updates take turns so their pushes never collide; pull-request dry runs get their own lane
+  group: ${{ github.event_name == 'pull_request' && format('dry-run-{0}', github.workflow) || 'data-refresh' }}
   cancel-in-progress: false
 
 jobs:
