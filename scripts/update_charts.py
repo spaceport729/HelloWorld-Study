@@ -20,7 +20,11 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from iso_codes import ALPHA2  # noqa: E402
 
-FEED = "https://rss.applemarketingtools.com/api/v2/{cc}/music/most-played/10/songs.json"
+# Apple serves the same feed from two addresses; try the newer one first.
+FEEDS = [
+    "https://rss.marketingtools.apple.com/api/v2/{cc}/music/most-played/10/songs.json",
+    "https://rss.applemarketingtools.com/api/v2/{cc}/music/most-played/10/songs.json",
+]
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "data" / "charts.json"
 COUNTRIES = ROOT / "data" / "countries.json"
@@ -28,10 +32,29 @@ COUNTRIES = ROOT / "data" / "countries.json"
 MIN_EXPECTED = 40
 
 
+HEADERS = {"User-Agent": "Mozilla/5.0 (HelloWorld charts; personal culture map)", "Accept": "application/json"}
+working_feed = None   # whichever address answered first, reused for every other country
+
+
 def fetch(cc):
-    req = urllib.request.Request(FEED.format(cc=cc), headers={"User-Agent": "HelloWorld-charts/1.0 (personal culture map)"})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        return json.loads(r.read())
+    global working_feed
+    urls = [working_feed] if working_feed else FEEDS
+    last = None
+    for url in urls:
+        try:
+            req = urllib.request.Request(url.format(cc=cc), headers=HEADERS)
+            with urllib.request.urlopen(req, timeout=12) as r:
+                data = json.loads(r.read())
+            working_feed = url
+            return data
+        except urllib.error.HTTPError as e:
+            if e.code == 404:
+                working_feed = working_feed or url   # the server answered; the country just has no storefront
+                raise
+            last = e
+        except Exception as e:
+            last = e
+    raise last
 
 
 def main():
@@ -41,6 +64,21 @@ def main():
     prev = old.get("countries", {})
     out = {}
     no_store, failed = [], []
+
+    # Try a few big storefronts first: if none answer, stop right away with the reason
+    # instead of waiting out a timeout for every country.
+    probe_errors = []
+    for cc in ("us", "gb", "jp"):
+        try:
+            fetch(cc)
+            break
+        except Exception as e:
+            probe_errors.append(f"{cc}: {type(e).__name__}: {e}")
+    else:
+        msg = "Apple's chart feed did not answer: " + " | ".join(probe_errors)
+        if os.environ.get("GITHUB_ACTIONS"):
+            print(f"::error title=Charts::{msg}")
+        sys.exit(msg)
 
     for cid in sorted(countries):
         cc = ALPHA2.get(cid)
@@ -79,7 +117,7 @@ def main():
     if failed:
         print("Failed:", ", ".join(failed))
     if os.environ.get("GITHUB_ACTIONS"):
-        print(f"::notice title=Charts::{len(out)} countries with charts, {len(no_store)} without a storefront, {len(failed)} failed. "
+        print(f"::notice title=Charts::Feed: {working_feed.split('/api')[0] if working_feed else 'none'}. {len(out)} countries with charts, {len(no_store)} without a storefront, {len(failed)} failed. "
               + " | ".join("#1 in " + s for s in sample))
 
     if len(out) < MIN_EXPECTED:
