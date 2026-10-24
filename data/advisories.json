@@ -1,6 +1,6 @@
 {
  "_about": "US State Department travel advisory levels for US citizens: 1 exercise normal precautions, 2 increased caution, 3 reconsider travel, 4 do not travel. Read from travel.state.gov on 2026-10-09; 'issued' is each advisory's own date. Advisories change: check travel.state.gov before booking.",
- "checked": "2026-10-21",
+ "checked": "2026-10-24",
  "source": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html",
  "countries": {
   "004": {
@@ -298,11 +298,11 @@
   },
   "364": {
    "level": 4,
-   "issued": "2025-12-05"
+   "issued": "2026-10-23"
   },
   "368": {
    "level": 4,
-   "issued": "2026-08-29"
+   "issued": "2026-10-23"
   },
   "372": {
    "level": 1,
@@ -310,7 +310,7 @@
   },
   "376": {
    "level": 3,
-   "issued": "2026-08-26"
+   "issued": "2026-10-23"
   },
   "380": {
    "level": 2,
@@ -334,7 +334,7 @@
   },
   "400": {
    "level": 3,
-   "issued": "2026-08-29"
+   "issued": "2026-10-23"
   },
   "404": {
    "level": 3,
@@ -350,7 +350,7 @@
   },
   "414": {
    "level": 3,
-   "issued": "2026-08-28"
+   "issued": "2026-10-23"
   },
   "417": {
    "level": 1,
@@ -362,7 +362,7 @@
   },
   "422": {
    "level": 4,
-   "issued": "2026-08-21"
+   "issued": "2026-10-23"
   },
   "426": {
    "level": 2,
@@ -434,7 +434,7 @@
   },
   "512": {
    "level": 3,
-   "issued": "2026-08-30"
+   "issued": "2026-10-23"
   },
   "516": {
    "level": 2,
@@ -518,7 +518,7 @@
   },
   "634": {
    "level": 3,
-   "issued": "2026-08-28"
+   "issued": "2026-10-23"
   },
   "642": {
    "level": 1,
@@ -534,7 +534,7 @@
   },
   "682": {
    "level": 3,
-   "issued": "2026-10-12"
+   "issued": "2026-10-23"
   },
   "686": {
    "level": 1,
@@ -602,7 +602,7 @@
   },
   "760": {
    "level": 4,
-   "issued": "2026-08-07"
+   "issued": "2026-10-23"
   },
   "762": {
    "level": 2,
@@ -622,7 +622,7 @@
   },
   "784": {
    "level": 3,
-   "issued": "2026-08-29"
+   "issued": "2026-10-23"
   },
   "788": {
    "level": 2,
@@ -678,7 +678,7 @@
   },
   "887": {
    "level": 4,
-   "issued": "2026-10-10"
+   "issued": "2026-10-23"
   },
   "894": {
    "level": 1,
