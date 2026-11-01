@@ -119,9 +119,10 @@
   "504": {
    "weather": [5,6,8,9,8,6,3,3,7,9,7,5],
    "value": [8,7,6,5,6,7,7,6,6,5,8,5],
-   "events": [4,4,4,5,7,8,5,5,4,5,4,5],
+   "events": [5,4,4,5,7,8,5,5,4,5,4,5],
    "calm": [8,7,5,3,5,7,6,5,6,4,7,5],
    "happening": {
+    "0": "Yennayer, the Amazigh new year, on January 14",
     "1": "Ramadan 2027 runs roughly mid-February to early March: quiet days, festive evenings",
     "4": "Rose Festival in Kelaat M'Gouna as the Dades Valley roses bloom",
     "5": "Gnaoua World Music Festival in Essaouira"
@@ -306,7 +307,7 @@
     "1": "Nice Carnival and Menton's Lemon Festival",
     "5": "Fête de la Musique on June 21: free music on every corner",
     "6": "Bastille Day on July 14, and lavender in bloom in Provence",
-    "11": "Lyon's Festival of Lights (around December 8) and Strasbourg's Christmas market"
+    "11": "Lyon's Festival of Lights (December 5–8) and Strasbourg's Christmas market"
    }
   },
   "276": {
@@ -467,9 +468,10 @@
   "724": {
    "weather": [4,5,6,7,9,9,7,7,9,8,5,4],
    "value": [8,8,6,5,6,4,2,2,4,7,9,7],
-   "events": [4,5,10,7,5,6,8,7,4,4,3,6],
+   "events": [6,5,10,7,5,6,8,7,4,4,3,6],
    "calm": [8,8,6,4,5,3,2,1,4,6,9,7],
    "happening": {
+    "0": "Three Kings parades on the evening of January 5, with sweets thrown to the crowds",
     "2": "Las Fallas in Valencia (March 15–19), then Semana Santa processions",
     "3": "Seville's April Fair",
     "6": "San Fermín in Pamplona, July 6–14",
@@ -667,10 +669,11 @@
   "780": {
    "weather": [8,9,9,8,7,6,6,6,6,6,6,7],
    "value": [6,3,6,6,7,7,7,7,8,8,7,6],
-   "events": [5,10,4,4,4,4,4,6,4,4,5,5],
+   "events": [5,10,4,4,4,4,4,6,4,4,6,5],
    "calm": [6,3,6,6,7,7,7,7,8,8,7,6],
    "happening": {
-    "1": "Carnival, February 8–9, 2027: steel pan, soca and dawn J'ouvert"
+    "1": "Carnival, February 8–9, 2027: steel pan, soca and dawn J'ouvert",
+    "10": "Divali, the festival of lights, on November 8"
    }
   },
   "044": {
@@ -708,10 +711,11 @@
   "328": {
    "weather": [6,6,7,7,5,4,5,6,7,7,6,5],
    "value": [7,7,7,7,7,7,7,7,7,7,7,6],
-   "events": [4,7,4,4,6,4,4,4,4,4,4,4],
+   "events": [4,7,4,4,6,4,4,4,4,4,6,4],
    "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
    "happening": {
-    "1": "Mashramani, Republic Day, February 23"
+    "1": "Mashramani, Republic Day, February 23",
+    "10": "Diwali on November 8, with a glowing motorcade of floats through Georgetown"
    }
   },
   "740": {
@@ -838,7 +842,7 @@
    "events": [9,4,4,4,4,4,4,4,4,4,4,5],
    "calm": [6,6,6,6,6,6,6,6,6,6,6,6],
    "happening": {
-    "0": "Vodun Days and the national Vodun festival on January 10, in Ouidah"
+    "0": "Vodun Days in Ouidah, January 2–9, and the national Vodun holiday on January 8"
    }
   },
   "072": {
@@ -1128,7 +1132,9 @@
    "value": [8,8,6,5,6,6,5,5,4,6,8,6],
    "events": [4,4,5,6,4,4,4,4,6,6,4,6],
    "calm": [8,8,6,5,6,6,5,5,4,6,8,6],
-   "happening": {}
+   "happening": {
+    "11": "Hanukkah, from the evening of December 4 to December 12"
+   }
   },
   "400": {
    "weather": [4,5,7,9,8,6,5,5,7,9,7,5],
@@ -1177,7 +1183,7 @@
    "events": [6,5,4,4,4,4,4,4,4,4,5,7],
    "calm": [4,4,5,6,8,9,9,9,8,6,5,3],
    "happening": {
-    "0": "Dubai Shopping Festival (mid-December to January)",
+    "0": "Dubai Shopping Festival (December 4 to January 17)",
     "11": "National Day, December 2"
    }
   },
@@ -1242,7 +1248,7 @@
     "0": "Pongal and Makar Sankranti kite festivals, mid-January",
     "2": "Holi, the festival of colors (around March 22, 2027)",
     "9": "Navratri, Durga Puja, and Diwali on October 29, 2027",
-    "10": "Pushkar Camel Fair in Rajasthan",
+    "10": "Diwali on November 8, then the Pushkar Camel Fair in Rajasthan",
     "11": "Hornbill Festival in Nagaland, December 1–10"
    }
   },
@@ -1253,7 +1259,7 @@
    "calm": [7,7,6,5,7,9,9,9,6,4,5,6],
    "happening": {
     "9": "Dashain and Tihar, the festival of lights, when even dogs get garlands",
-    "10": "Clear mountain views for trekking"
+    "10": "Tihar, the festival of lights, with Lakshmi Puja on November 8, and clear mountain views for trekking"
    }
   },
   "064": {
@@ -1347,23 +1353,24 @@
   "116": {
    "weather": [8,8,7,6,5,5,5,5,5,6,8,8],
    "value": [5,5,6,6,7,8,8,8,8,7,6,4],
-   "events": [4,4,4,8,4,4,4,4,4,4,8,4],
+   "events": [4,4,4,8,4,4,4,4,4,4,6,4],
    "calm": [5,5,6,6,7,8,8,8,8,7,6,4],
    "happening": {
     "3": "Khmer New Year, mid-April",
-    "10": "Bon Om Touk water festival boat races in Phnom Penh"
+    "10": "Bon Om Touk, the Water Festival, November 23–25 (Phnom Penh's boat races are called off this year)"
    }
   },
   "458": {
    "weather": [6,6,7,7,7,7,7,7,7,6,6,5],
    "value": [6,5,6,6,7,7,6,6,7,7,7,5],
-   "events": [7,8,4,4,4,4,4,6,4,6,4,4],
+   "events": [7,8,4,4,4,4,4,6,4,6,6,4],
    "calm": [6,5,6,6,7,7,6,6,7,7,7,5],
    "happening": {
-    "0": "Thaipusam at the Batu Caves (January or February)",
+    "0": "Thaipusam at the Batu Caves, January 22",
     "1": "Chinese New Year, February 6, 2027",
     "7": "Merdeka Day, August 31",
-    "9": "Deepavali, October 29, 2027"
+    "9": "Deepavali, October 29, 2027",
+    "10": "Deepavali on November 8, with open houses for friends and neighbors"
    }
   },
   "096": {
@@ -1378,9 +1385,10 @@
   "360": {
    "weather": [5,5,6,7,8,9,9,9,8,7,6,5],
    "value": [6,6,7,7,7,5,3,3,6,7,7,4],
-   "events": [4,4,8,4,4,4,4,6,4,4,4,4],
+   "events": [6,4,8,4,4,4,4,6,4,4,4,4],
    "calm": [6,6,7,7,7,5,3,3,6,7,7,4],
    "happening": {
+    "0": "Galungan in Bali on January 13, with tall penjor bamboo poles arching over the streets",
     "2": "Nyepi, Bali's Day of Silence, after a night of ogoh-ogoh monster parades (usually March)",
     "7": "Independence Day, August 17, with village games"
    }
