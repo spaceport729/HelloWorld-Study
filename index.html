@@ -46,7 +46,9 @@ header{padding:18px 20px 4px;max-width:1600px;margin:0 auto}
 h1{font-family:var(--display);font-weight:400;font-size:clamp(2rem,7vw,3.2rem);line-height:1;margin:0;letter-spacing:-.01em}
 .tag{margin:.4rem 0 0;color:var(--soft);font-size:.95rem}
 .mapwrap{position:relative;max-width:1600px;margin:0 auto;padding:6px 0 0}
-svg#map{display:block;width:100%;height:auto;touch-action:manipulation}
+/* the map handles pinch and drag itself (see "Zoom the map, not the page"), so the page text doesn't grow */
+svg#map{display:block;width:100%;height:auto;touch-action:pan-y;-webkit-user-select:none;user-select:none}
+svg#map.zoomed{touch-action:none;cursor:grab}
 .c{fill:var(--land);stroke:var(--land-edge);stroke-width:.5;vector-effect:non-scaling-stroke;cursor:pointer;transition:fill .2s}
 .c.f{fill:var(--dye);stroke:var(--dye-edge);stroke-width:1}
 .c.f.dim{opacity:.55}
@@ -310,18 +312,80 @@ function setVB(v){vb=v; map.setAttribute('viewBox',v.join(' '));
   const k=v[2]/960; gP.querySelectorAll('.pin').forEach(c=>c.setAttribute('r',3.2*k)); gP.querySelectorAll('.ring').forEach(c=>c.setAttribute('r',6*k)); 
   // tap targets stay about 11 screen pixels in radius at any screen width and zoom
   const r=map.getBoundingClientRect(); const scale=Math.min((r.width||960)/v[2],(r.height||500)/v[3])||1;
-  gP.querySelectorAll('.hit').forEach(c=>c.setAttribute('r',11/scale));}
+  gP.querySelectorAll('.hit').forEach(c=>c.setAttribute('r',11/scale));
+  // zoomed in: one finger drags the map; whole world: one finger scrolls the page as usual
+  map.classList.toggle('zoomed',v[2]<full[2]-1);}
 window.addEventListener('resize',()=>setVB(vb));
+let anim=0;
 function animateTo(target){
+  const my=++anim;
   if(reduce){setVB(target);return;}
   const from=vb.slice(), t0=performance.now(), dur=650;
   const step=now=>{
+    if(my!==anim) return; // a pinch or drag took over
     const k=Math.min(1,(now-t0)/dur), e=1-Math.pow(1-k,3);
     setVB(from.map((v,i)=>v+(target[i]-v)*e));
     if(k<1) requestAnimationFrame(step);
   };
   requestAnimationFrame(step);
 }
+
+/* ---------- Zoom the map, not the page ----------
+   Pinch (or the trackpad / mouse wheel) zooms only the map, and once zoomed in, one finger drags it around.
+   The page itself never zooms, so the writing stays the same size. */
+const MINW=30; // the closest you can zoom, in map units (the whole world is 960 wide)
+// where the map sits on screen for a given view (the SVG letterboxes the view to keep its shape)
+function fit(v){const r=map.getBoundingClientRect(), s=Math.min(r.width/v[2],r.height/v[3]);
+  return {r,s,ox:(r.width-v[2]*s)/2,oy:(r.height-v[3]*s)/2};}
+function toMap(v,x,y){const f=fit(v); return [v[0]+(x-f.r.left-f.ox)/f.s, v[1]+(y-f.r.top-f.oy)/f.s];}
+// a view of width w that keeps map point p under screen point (x,y), kept inside the world
+function viewAt(w,p,x,y){
+  const ratio=vb[3]/vb[2]; w=Math.max(MINW,Math.min(full[2],w)); const h=w*ratio;
+  const f=fit([0,0,w,h]); let vx=p[0]-(x-f.r.left-f.ox)/f.s, vy=p[1]-(y-f.r.top-f.oy)/f.s;
+  vx=Math.max(Math.min(0,full[2]-w),Math.min(vx,Math.max(0,full[2]-w)));
+  vy=Math.max(Math.min(0,full[3]-h),Math.min(vy,Math.max(0,full[3]-h)));
+  return [vx,vy,w,h];
+}
+function userView(v){anim++; setVB(v); worldBtn.classList.toggle('show',v[2]<full[2]-1||current!==null);}
+const ptrs=new Map(); let gesture=null, moved=false;
+function startGesture(){
+  const ps=[...ptrs.values()], v=vb.slice();
+  if(ps.length>=2){const [a,b]=ps, mx=(a.x+b.x)/2, my=(a.y+b.y)/2;
+    gesture={pinch:true,v,d:Math.hypot(a.x-b.x,a.y-b.y)||1,p:toMap(v,mx,my)};}
+  else if(ps.length===1){gesture={pinch:false,v,x:ps[0].x,y:ps[0].y,p:toMap(v,ps[0].x,ps[0].y)};}
+  else gesture=null;
+}
+map.addEventListener('pointerdown',e=>{
+  if(e.pointerType==='mouse'&&e.button!==0) return;
+  if(ptrs.size===0) moved=false;
+  ptrs.set(e.pointerId,{x:e.clientX,y:e.clientY}); startGesture();
+});
+map.addEventListener('pointermove',e=>{
+  if(!ptrs.has(e.pointerId)||!gesture) return;
+  ptrs.set(e.pointerId,{x:e.clientX,y:e.clientY});
+  const ps=[...ptrs.values()];
+  if(gesture.pinch&&ps.length>=2){
+    const [a,b]=ps, d=Math.hypot(a.x-b.x,a.y-b.y)||1;
+    moved=true; userView(viewAt(gesture.v[2]*gesture.d/d,gesture.p,(a.x+b.x)/2,(a.y+b.y)/2));
+  } else if(!gesture.pinch&&vb[2]<full[2]-1){
+    // drag only once the finger has really moved, so a tap still opens a country
+    if(!moved&&Math.hypot(e.clientX-gesture.x,e.clientY-gesture.y)<8) return;
+    if(!moved){moved=true; try{map.setPointerCapture(e.pointerId);}catch(_){} }
+    userView(viewAt(gesture.v[2],gesture.p,e.clientX,e.clientY));
+  }
+});
+const endPtr=e=>{ if(!ptrs.delete(e.pointerId)) return; startGesture(); };
+map.addEventListener('pointerup',endPtr); map.addEventListener('pointercancel',endPtr);
+// a drag or pinch shouldn't also count as a tap on whatever country it ended over
+map.addEventListener('click',e=>{ if(moved){e.stopPropagation(); e.preventDefault(); moved=false;} },true);
+map.addEventListener('wheel',e=>{
+  e.preventDefault();
+  const k=Math.exp((e.ctrlKey?-0.01:-0.002)*e.deltaY); // ctrlKey: a trackpad pinch
+  userView(viewAt(vb[2]/k,toMap(vb,e.clientX,e.clientY),e.clientX,e.clientY));
+},{passive:false});
+// Safari: keep a two-finger pinch on the map from zooming the whole page
+['gesturestart','gesturechange'].forEach(t=>map.addEventListener(t,e=>e.preventDefault()));
+map.addEventListener('touchmove',e=>{ if(e.touches.length>1) e.preventDefault(); },{passive:false});
 function zoomTo(id){
   const b=els[id].getBBox();
   let w=Math.max(b.width*2.6,150), h=w*500/960;
