@@ -1,6 +1,6 @@
 {
  "_about": "US State Department travel advisory levels for US citizens: 1 exercise normal precautions, 2 increased caution, 3 reconsider travel, 4 do not travel. Read from travel.state.gov on 2026-10-09; 'issued' is each advisory's own date. Advisories change: check travel.state.gov before booking.",
- "checked": "2026-11-21",
+ "checked": "2026-11-24",
  "source": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html",
  "countries": {
   "004": {
@@ -173,7 +173,7 @@
   },
   "208": {
    "level": 2,
-   "issued": "2024-09-17"
+   "issued": "2026-11-23"
   },
   "214": {
    "level": 2,
@@ -258,7 +258,7 @@
   },
   "304": {
    "level": 2,
-   "issued": "2024-10-29"
+   "issued": "2026-11-23"
   },
   "320": {
    "level": 3,
